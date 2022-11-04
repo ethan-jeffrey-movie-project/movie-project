@@ -2,7 +2,11 @@
 
 
 //glitch url
-const G_Url = 'https://vivid-flawless-almandine.glitch.me/movies';
+// const G_Url = 'https://vivid-flawless-almandine.glitch.me/movies';
+
+const G_Url = 'https://gravel-rainbow-hammer.glitch.me/movies';
+
+
 
 // const options = {
 //     method: 'POST',
@@ -15,21 +19,6 @@ const G_Url = 'https://vivid-flawless-almandine.glitch.me/movies';
 fetch(G_Url)
     .then((response) => response.json())
     .then((json) => console.log(json));
-
-//
-// fetch("")
-//     .then((response) => response.json())
-//     .then((data) => console.log(data))
-//     .catch(error => console.error(error))
-
-
-
-
-
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
-getRandomInt(400);
 
 
 
@@ -91,24 +80,15 @@ fetch(G_Url)
 
 
 
-
-
-
-
-//
-// fetch(url).then(res => res.json()).then(function(res){
-//     myDiv.innerHTML = `<div>
-//         <h2>${res[0]}</h2>
-//
-//     </div>`
-// })
-
-
-
-
-function displaymMovie(data) {
-    const movie = document.getElementById("myDiv");
+function movieAdd() {
+    $("#movies").append("<tr>" +
+        "<td>My First Video</td>" +
+        "<td>6/11/2015</td>" +
+        "<td>www.pluralsight.com</td>" +
+        "</tr>");
 }
+
+
 
 // fetch(G_Url)
 // 	.then(res => res.json())
