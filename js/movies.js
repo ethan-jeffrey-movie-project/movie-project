@@ -1,4 +1,6 @@
-// alert("Wuzzzzz uppp!!!!");
+
+
+
 //
 // const url = 'https://glitch.com/edit/#!/gravel-rainbow-hammer?path=.env%3A1%3A0';
 // const options = {
@@ -25,14 +27,11 @@
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
-
 getRandomInt(400);
 
 
 
-
-//
-const reviewObj = {
+const addedMovie = {
 
     name: 'Halloween',
     rating: 4,
@@ -83,12 +82,6 @@ fetch(url,{
 
 
 
-
-
-
-
-
-
 fetch(url)
         .then((response) => response.json())
         .then((data) => console.log(data))
@@ -98,32 +91,6 @@ fetch(url)
 fetch(url,{
     method: 'DELETE'
 }).then(res => res.json()).then(data => console.log(data))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
