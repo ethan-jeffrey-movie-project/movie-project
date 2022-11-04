@@ -110,14 +110,14 @@ function displaymMovie(data) {
     const movie = document.getElementById("myDiv");
 }
 
-fetch(G_Url)
-	.then(res => res.json())
-	.then(data => {
-		console.log(data)
-
-        movies.innerHTML = `<div>
-         <h2>${res[0]}</h2>
-     </div>`})
+// fetch(G_Url)
+// 	.then(res => res.json())
+// 	.then(data => {
+// 		console.log(data)
+//
+//      //    movies.innerHTML = `<div>
+//      //     <h2>${res[0]}</h2>
+//      // </div>`})
 
 		// data.forEach(post => {
 		// 	if (typeof (post.id) === 'number' || typeof (post.id) === 'string') {
