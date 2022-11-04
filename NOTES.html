@@ -8,6 +8,23 @@
 
 <div class="container"></div>
 
+<!--============working form-->
+
+<form id="form" method="post">
+	<input type="text", id="name" placeholder="Name"/></br>
+	<input type="text", id="body" placeholder="Body"/></br>
+	<input type="submit" value="Add"/>
+</form>
+<div>
+	<h3>The Following data is successfuly posted</h3>
+	<h4 id="title"></h4>
+	<h5 id="bd"></h5>
+</div>
+
+<!--============working form end -->
+
+
+
 <script>
 
 	//=====================================// Getting a resource //=========================//
@@ -212,7 +229,44 @@
 
 </script>
 
+<!--working fetch-->
 
+	<script>
+		var form=document.getElementById('form')
+
+		form.addEventListener('submit', function(e){
+		e.preventDefault()
+
+		var name=document.getElementById('name').value
+		var body=document.getElementById('body').value
+
+		fetch(G_Url, {
+		method: 'POST',
+		body: JSON.stringify({
+		title:name,
+		body:body,
+
+	}),
+		headers: {
+		'Content-type': 'application/json; charset=UTF-8',
+	}
+	})
+		.then(function(response){
+		return response.json()})
+		.then(function(data)
+	{console.log(data)
+		title=document.getElementById("title")
+		body=document.getElementById("bd")
+		title.innerHTML = data.title
+		body.innerHTML = data.body
+	}).catch(error => console.error('Error:', error));
+	});
+
+
+
+</script>
+
+<!--working fetch-->
 
 </body>
 </html>
