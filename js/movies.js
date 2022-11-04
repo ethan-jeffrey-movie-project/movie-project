@@ -1,8 +1,9 @@
 
 
 
-//
-// const url = 'https://glitch.com/edit/#!/gravel-rainbow-hammer?path=.env%3A1%3A0';
+//glitch url
+const G_Url = 'https://vivid-flawless-almandine.glitch.me/movies';
+
 // const options = {
 //     method: 'POST',
 //     headers: {
@@ -10,9 +11,9 @@
 //     },
 //     body: JSON.stringify(reviewObj),
 // };
-// fetch(url, options)
-//     .then( response => console.log(response) ) /* review was created successfully */
-//     .catch( error => console.error(error) ); /* handle errors */
+fetch(G_Url)
+    .then((response) => response.json())
+    .then((json) => console.log(json));
 
 //
 // fetch("")
@@ -37,7 +38,7 @@ const addedMovie = {
     rating: 4,
     comments: "best slasher movie"
 };
-const url = ' https://codeup-json-server.glitch.me/movies/';//user object selection they want to delete
+const url = 'https://codeup-json-server.glitch.me/movies/';//user object selection they want to delete
 
 const options = {
     method: 'POST',
