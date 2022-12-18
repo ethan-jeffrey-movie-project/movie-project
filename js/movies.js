@@ -17,7 +17,6 @@
 	$('#movieDisplay').append(`${createImageFromGlitch(movieObj)}`);
 	//connect delete
 	console.log("Iterating over id: " + movieObj.id);
-
 	//when the id of movie obj is clicked do the following
 	$(`#${movieObj.id}`).click(function (e) {
 	e.preventDefault();
