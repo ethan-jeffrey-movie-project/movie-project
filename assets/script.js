@@ -7,13 +7,13 @@ const main = document.getElementById('main')
 const form = document.getElementById('form')
 const search = document.getElementById('search')
 
-// async function getInfo() {
-// 	const response = await fetch('https://lucky-melodic-particle.glitch.me/movies');
-// 	let data = await response.json(); //extract JSON from the http response
-// 	return data;// do something with myJson
-// }
+async function getInfo() {
+	const response = await fetch('https://lucky-melodic-particle.glitch.me/movies');
+	let data = await response.json(); //extract JSON from the http response
+	return data;// do something with myJson
+}
 
-// getInfo().then(data => console.log(data[0]["poster_path"]))
+getInfo().then(data => console.log(data))
 
 getMovies(API_URL)
 
@@ -28,7 +28,7 @@ function showMovies(movies) {
 	main.innerHTML = ''
 
 	movies.forEach((movie) => {
-		const { title, poster_path, vote_average, overview } = movie
+		const { title, poster_path, vote_average, overview, id } = movie
 
 		const movieEl = document.createElement('div')
 		movieEl.classList.add('movie')
@@ -42,6 +42,13 @@ function showMovies(movies) {
             <div class="overview">
           <h3>Overview</h3>
           ${overview}
+        </div>
+        <div class="container">
+        <div class="id">ID:
+        ${id}
+        </div>
+        <div class="delete btn btn-danger">Delete
+        </div>
         </div>
         `
 		main.appendChild(movieEl)
