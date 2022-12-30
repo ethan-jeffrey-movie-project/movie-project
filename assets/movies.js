@@ -5,8 +5,9 @@
 	refreshMovies();
 
 	function refreshMovies() {
-	document.getElementById('movieDisplay').innerHTML = `<div class="text-center"><h1 style="color:var(--pink2)">LOADING...</h1></div>`;
-	fetch('https://dandy-plucky-cover.glitch.me/movies').then(response => {
+	document.getElementById('movieDisplay').innerHTML =
+		`<div class="text-center"><h1 style="color:var(--pink2)">LOADING...</h1></div>`;
+	fetch('https://lucky-melodic-particle.glitch.me/movies').then(response => {
 	//html is going to display on id with moviedisplay
 	$('#movieDisplay').html('');
 	response.json().then(movies => {
@@ -24,7 +25,7 @@
 	let deleteID = movieObj.id;
 
 	console.log(`deleting id  ${movieObj.id}`)
-	fetch(`https://dandy-plucky-cover.glitch.me/movies/${deleteID}`, {
+	fetch(`https://lucky-melodic-particle.glitch.me/movies/${deleteID}`, {
 	method: 'DELETE',
 }).then(result => {
 
@@ -43,7 +44,7 @@
 	let html =`
 				<div class="col-3">
 					<div class="card bg-dark text-white mb-2 cardMinHeight text-wrap">
-						<img src="${movies.Poster}" class="card-img imgOpacity cardHeight" alt="Broken Image">
+						<img src="${movies.poster_path}" class="card-img imgOpacity cardHeight" alt="Broken Image">
 							<div class="card-img-overlay">
 								<h3 class="card-title">${movies.Title}</h3>
 								<p class="card-text"><strong>Rated</strong>: ${movies.Rated}</p>
@@ -57,7 +58,7 @@
 	let html =`
 				<div class="col-3 hovEff" >
 					<div class="card bg-dark text-white mb-2 cardMinHeight text-wrap overflow-auto " style="border-radius: 13%">
-						<img src="${movies.poster}" class="card-img imgOpacity cardHeight " alt="Broken Image">
+						<img src="${movies.poster_path}" class="card-img imgOpacity cardHeight " alt="Broken Image">
 							<div class="card-img-overlay ">
 								<h3 class="card-title"> ${movies.title}</h3>
 								<p class="card-text"><strong>Rating</strong>: ${movies.rating}</p>
@@ -82,14 +83,14 @@
 	if (movieObj.rating === '' || movieObj.rating === undefined) {
 	movieObj.rating = 'N/A';
 }
-	movieObj.poster = $('#inputPosterLink').val();
-	if (movieObj.poster === '' || movieObj.poster === undefined) {
-	movieObj.poster = 'img/....jpeg';
+	movieObj.poster_path = $('#inputPosterLink').val();
+	if (movieObj.poster_path === '' || movieObj.poster_path === undefined) {
+	movieObj.poster_path = 'img/....jpeg';
 }
 	console.log("showing final object before add");
 	console.log(movieObj);
 	$('#movieDisplay').prepend(createImage(movieObj));
-	const url = 'https://dandy-plucky-cover.glitch.me/movies';
+	const url = 'https://lucky-melodic-particle.glitch.me/movies';
 	const options = {
 	method: 'POST',
 	headers: {
@@ -114,7 +115,7 @@
 	e.preventDefault();
 	let editID = document.getElementById('editIDInput').value;
 	console.log('ID to be edited:' + editID);
-	fetch(`https://dandy-plucky-cover.glitch.me/movies/${editID}`, {
+	fetch(`https://lucky-melodic-particle.glitch.me/movies/${editID}`, {
 	method: 'GET',
 }).then(result => result.json().then(final => {
 	console.log("showing final object");
@@ -122,7 +123,7 @@
 	//TARGETS THE CORRESPONDING ID'S
 	document.getElementById('inputEditTitle').value = final.title;
 	document.getElementById('inputEditRating').value = final.rating;
-	document.getElementById('inputEditPosterLink').value = final.poster;
+	document.getElementById('inputEditPosterLink').value = final.poster_path;
 }));
 
 });
@@ -136,7 +137,7 @@
 	movieObj.rating = document.getElementById('inputEditRating').value;
 	movieObj.poster = document.getElementById('inputEditPosterLink').value;
 	console.log(movieObj);
-	const url = `https://dandy-plucky-cover.glitch.me/movies/${editID}`;
+	const url = `https://lucky-melodic-particle.glitch.me/movies/${editID}`;
 	const options = {
 	method: 'PATCH',
 	headers: {
@@ -158,7 +159,7 @@
 	console.log(document.getElementById('deleteIDinput').value);
 	let deleteID = (document.getElementById('deleteIDinput').value);
 	document.getElementById('deleteIDinput').value = '';
-	fetch(`https://dandy-plucky-cover.glitch.me/movies/${deleteID}`, {
+	fetch(`https://lucky-melodic-particle.glitch.me/movies/${deleteID}`, {
 	method: 'DELETE',
 }).then(result => {
 	console.log(`deleted ${deleteID}`);
@@ -193,7 +194,7 @@
 	$('#searchMovieBtn').click(function () {
 	let searchInput = $('#searchMovieInput').val();
 	console.log("search query is: " + searchInput);
-	const myPromise = fetch(`https://dandy-plucky-cover.glitch.me/movies`).then(firstPull => firstPull.json().then(secondPull => {
+	const myPromise = fetch(`https://lucky-melodic-particle.glitch.me/movies`).then(firstPull => firstPull.json().then(secondPull => {
 	$('#movieDisplay').html('');
 	secondPull.forEach(singlePull => {
 	if (singlePull.title === searchInput) {
@@ -208,5 +209,77 @@
 });
 
 });
+
+//===================
+
+const API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1'
+const IMG_PATH = 'https://image.tmdb.org/t/p/w1280'
+const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query="'
+
+const main = document.getElementById('main')
+const form = document.getElementById('form')
+const search = document.getElementById('search')
+
+// Get initial movies
+getMovies(API_URL)
+
+async function getMovies(url) {
+	const res = await fetch(url)
+	const data = await res.json()
+
+	showMovies(data.results)
+}
+
+function showMovies(movies) {
+	main.innerHTML = ''
+
+	movies.forEach((movie) => {
+		const { title, poster_path, vote_average, overview } = movie
+
+		const movieEl = document.createElement('div')
+		movieEl.classList.add('movie')
+
+		movieEl.innerHTML = `
+            <img src="${IMG_PATH + poster_path}" alt="${title}">
+            <div class="movie-info">
+          <h3>${title}</h3>
+          <span class="${getClassByRate(vote_average)}">${vote_average}</span>
+            </div>
+            <div class="overview">
+          <h3>Overview</h3>
+          ${overview}
+          <h3 class="card-title"> ${movies.title}</h3>
+			<p class="card-text"><strong>Rating</strong>: ${movies.rating}</p>
+			<p class="card-text"><strong>Movie ID</strong>: ${movies.id}</p>
+			<button class="btn btn-danger  colorBtn" id="${movies.id}">DELETE</button>
+        </div>
+        `
+		main.appendChild(movieEl)
+	})
+}
+
+function getClassByRate(vote) {
+	if(vote >= 8) {
+		return 'green'
+	} else if(vote >= 5) {
+		return 'orange'
+	} else {
+		return 'red'
+	}
+}
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault()
+
+	const searchTerm = search.value
+
+	if(searchTerm && searchTerm !== '') {
+		getMovies(SEARCH_API + searchTerm)
+
+		search.value = ''
+	} else {
+		window.location.reload()
+	}
+})
 
 
