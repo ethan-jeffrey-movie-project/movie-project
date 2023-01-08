@@ -1,0 +1,103 @@
+
+
+:root {
+    --pink1: #e32f4c;
+    --pink2: #ff374e;
+    --blue1: #5ac4f2;
+    --blue2: #255bd4;
+    --darkBlue: #151d7c;
+    --darkPurple: #270044;
+    --pblack: #130328
+}
+/*FONTS*/
+* {
+    font-family: 'Anton', sans-serif;
+    border: red 1px solid;
+}
+
+/*HOVER EFFECT*/
+/*.hovEff {*/
+/*    padding: 9px 25px;*/
+/*    color: black;*/
+/*    border-radius: 50px;*/
+/*    cursor: pointer;*/
+
+/*}*/
+
+/*.hovEff :hover {*/
+/*    opacity: 90%;*/
+/*    box-shadow: 0 0 25px var(--blue2), 0 0 10px var(--darkBlue);*/
+/*}*/
+/*ADD/EDIT FORM */
+.under {
+    color: lightseagreen;
+    z-index: 1;
+}
+/*STYLING FOR BTN */
+/*.colorBtn {*/
+/*    background-image: conic-gradient(var(--darkPurple), var(--darkBlue), var(--pink2), var(--darkPurple));*/
+/*}*/
+
+/*.addBtn {*/
+/*    color: white;*/
+/*    background-image: linear-gradient(to right, var(--blue1), var(--pink1));*/
+/*}*/
+
+/*.edBtn {*/
+/*    color: white;*/
+/*    background-image: linear-gradient(to right, var(--blue2), var(--darkBlue));*/
+/*}*/
+
+/*.rfBtn {*/
+/*    color: white;*/
+/*    background-image: linear-gradient(to right, var(--pblack), var(--blue2));*/
+/*}*/
+
+/*.srBtn {*/
+/*    color: white;*/
+/*    background-image: linear-gradient(to right, var(--pink2), var(--blue2));*/
+/*}*/
+
+/*CARDS STYLING*/
+.cardHeight {
+    height: 95%;
+    width: auto;
+    object-fit: contain;
+}
+
+.cardMinHeight {
+    min-height: 50vh;
+}
+
+.hideOption {
+    display: none;
+}
+/*BODY STYLING*/
+body {
+    background-color: darkslateblue;
+}
+/*NAV STYLING*/
+/*nav {*/
+/*    background-color: var(--pblack);;*/
+/*}*/
+
+.hover {
+    opacity: 90;
+}
+
+.sidebar-box {
+    max-height: 120px;
+    position: relative;
+    overflow: hidden;
+}
+.sidebar-box .read-more {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0; padding: 30px 0;
+
+    /* "transparent" only works here because == rgba(0,0,0,0) */
+    background-image: linear-gradient(to bottom, transparent, black);
+}
