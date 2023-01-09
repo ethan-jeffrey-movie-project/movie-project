@@ -42,9 +42,9 @@
 	function createImage(movies){
 	let html =`
 				<div class="col-3 ">
-					<div class="card bg-dark text-white mb-2 cardMinHeight text-wrap">
-						<img src="${movies.poster}" class="card-img imgOpacity cardHeight" alt="Broken Image">
-							<div class="card-img-overlay">
+					<div class="card  text-white m-1 cardMinHeight text-wrap">
+						<img src="${movies.poster}" class="card-img imgOpacity  " alt="Broken Image">
+							<div class="card-img-overlay ">
 								<h3 class="card-title">${movies.title}</h3>
 								<p class="card-text"><strong>Rated</strong>: ${movies.rating}</p>
 							</div>
@@ -55,14 +55,14 @@
 
 	function createImageFromGlitch(movies){
 	let html =`
-				<div class="col-3 ">
-					<div class="card bg-dark text-white mb-2 cardMinHeight text-wrap overflow-auto ">
-						<img src="${movies.poster}" class="card-img imgOpacity cardHeight " alt="Broken Image">
-							<div class="card-img-overlay ">
-								<h3 class="card-title"> ${movies.title}</h3>
-								<p class="card-text"><strong>Rating</strong>: ${movies.rating}</p>
-								<p class="card-text"><strong>Movie ID</strong>: ${movies.id}</p>
-								<button class="btn btn-danger  colorBtn" id="${movies.id}">DELETE</button>
+				<div class="col-3 box">
+					<div class="card  text-white m-1 cardMinHeight text-center image">
+						<img src="${movies.poster}" class="card-img imgOpacity " alt="Broken Image">
+							<div class="card-img-overlay overlay ">
+								<h3 class="card-title "> <strong>${movies.title}</strong></h3>
+								<p class="card-text "><strong>Rating</strong>: ${movies.rating}</p>
+								<p class="card-text "><strong>Movie ID</strong>: ${movies.id}</p>
+								<button class="btn btn-danger  colorBtn " id="${movies.id}">DELETE</button>
 							</div>
 					</div>
 				</div>`;
@@ -212,36 +212,3 @@
 
 });
 
-	var $el, $ps, $up, totalHeight;
-
-	$(".sidebar-box .button").click(function() {
-
-		totalHeight = 0
-
-		$el = $(this);
-		$p  = $el.parent();
-		$up = $p.parent();
-		$ps = $up.find("p:not('.read-more')");
-
-		// measure how tall inside should be by adding together heights of all inside paragraphs (except read-more paragraph)
-		$ps.each(function() {
-			totalHeight += $(this).outerHeight();
-		});
-
-		$up
-			.css({
-				// Set height to prevent instant jumpdown when max height is removed
-				"height": $up.height(),
-				"max-height": 9999
-			})
-			.animate({
-				"height": totalHeight
-			});
-
-		// fade out read-more
-		$p.fadeOut();
-
-		// prevent jump-down
-		return false;
-
-	});

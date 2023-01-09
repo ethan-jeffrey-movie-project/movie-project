@@ -20,16 +20,14 @@
     <div class="row">
 
         <!--START NAV BAR-->
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg navbar-dark badge pt-5">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Movie Project</a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-
-<!--                    <span class="navbar-toggler-icon"></span>-->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -49,7 +47,7 @@
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search " aria-label="Search"
                                id="searchMovieInput">
-                        <button type="button" class="btn btn-outline-light" id="searchMovieBtn">Search</button>
+                        <button type="button" class="btn  btn-outline-primary " id="searchMovieBtn">Search</button>
                     </form>
                     <!--                  SEARCH INPUT END-->
                 </div>
@@ -60,67 +58,75 @@
         <!--		EDIT FORM START-->
         <div id="editMovieOption" class="hideOption under">
             <hr>
-            <label for="editIDInput">INSERT ID</label>
-            <input type="number" id="editIDInput">
-
+            <div class=" d-flex justify-content-center">
+            <label for="editIDInput" class="m-2">INSERT ID</label>
+            <input type="number" id="editIDInput" class="">
+            </div>
             <hr>
             <!--			FORM START-->
-            <div class="row mb-1">
-                <label for="inputTitle" class="form-label text-nowrap">INSERT TITLE</label>
-                <div class="col-sm-10">
+            <div class="row mb-1 d-flex justify-content-center ">
+                <label for="inputTitle" class="form-label text-center">INSERT TITLE</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="inputEditTitle">
                 </div>
             </div>
-            <div class="row mb-1">
-                <label for="inputRating" class="form-label text-nowrap">INSERT RATING</label>
-                <div class="col-sm-10">
+            <div class="row mb-1 d-flex justify-content-center">
+                <label for="inputRating" class="form-label text-center">INSERT RATING</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="inputEditRating">
                 </div>
             </div>
-            <div class="row mb-1">
-                <label for="inputPosterLink" class="form-label text-nowrap">ADD IMG</label>
-                <div class="col-sm-10">
+            <div class="row mb-1 d-flex justify-content-center">
+                <label for="inputPosterLink" class="form-label text-center">ADD IMG</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="inputEditPosterLink">
                 </div>
             </div>
             <!--			FORM END-->
 
             <!--			BTN FOR EDIT FORM START-->
-            <button type="button" class="btn btn-outline-light" id="editMovieSubBtn">EDIT</button>
+            <div class="text-center">
+                <button type="button" class="btn btn-outline-add text-center" id="editMovieSubBtn">EDIT</button>
+            </div>
             <!--			BTN FOR EDIT FORM END-->
+
+
 
 
         </div>
         <!--        EDIT FORM END-->
+
 
         <!--             ADD FORM START -->
         <div id="addMovieForm" class="hideOption under">
 
             <hr>
             <!--			FORM START-->
-            <div class="row mb-1">
-                <label for="inputTitle" class="form-label text-nowrap">ADD MOVIE</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputTitle">
+            <div class="row mb-1 d-flex justify-content-center">
+                <label for="inputTitle" class="form-label  text-center">ADD MOVIE</label>
+                <div class=" col-sm-6 ">
+                    <input type="text" class="form-control " id="inputTitle">
                 </div>
             </div>
 
-            <div class="row mb-1">
-                <label for="inputRating" class="form-label text-nowrap">ADD RATING</label>
-                <div class="col-sm-10">
+            <div class="row mb-1 d-flex justify-content-center">
+                <label for="inputRating" class="form-label text-center">ADD RATING</label>
+                <div class="col-sm-6">
                     <input type="number" class="form-control" id="inputRating" min="0" max="10">
                 </div>
             </div>
-            <div class="row mb-1">
-                <label for="inputPosterLink" class="form-label text-nowrap">ADD IMG</label>
-                <div class="col-sm-10">
+            <div class="row mb-1 d-flex justify-content-center">
+                <label for="inputPosterLink" class="form-label text-center">ADD IMG</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="inputPosterLink">
                 </div>
             </div>
             <!--			FORM END-->
 
             <!--			BTN FORM START-->
-            <button type="button" class="btn btn-outline-light" id="addMovieBtn">ADD</button>
+            <div class="text-center">
+            <button type="button" class="btn btn-outline-add text-center" id="addMovieBtn">ADD</button>
+            </div>
             <!--			BTN FORM END-->
 
         </div>
@@ -133,6 +139,7 @@
             <div id="movieDisplay" class="row">
             </div>
         </div>
+        </div
         <!--        END MOVIE DISPLAY-->
 
     </div>

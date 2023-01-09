@@ -1,72 +1,25 @@
 
-
-:root {
-    --pink1: #e32f4c;
-    --pink2: #ff374e;
-    --blue1: #5ac4f2;
-    --blue2: #255bd4;
-    --darkBlue: #151d7c;
-    --darkPurple: #270044;
-    --pblack: #130328
-}
 /*FONTS*/
 * {
     font-family: 'Anton', sans-serif;
-    border: red 1px solid;
+    /*border: red 1px solid;*/
 }
 
-/*HOVER EFFECT*/
-/*.hovEff {*/
-/*    padding: 9px 25px;*/
-/*    color: black;*/
-/*    border-radius: 50px;*/
-/*    cursor: pointer;*/
-
-/*}*/
-
-/*.hovEff :hover {*/
-/*    opacity: 90%;*/
-/*    box-shadow: 0 0 25px var(--blue2), 0 0 10px var(--darkBlue);*/
-/*}*/
 /*ADD/EDIT FORM */
 .under {
     color: lightseagreen;
     z-index: 1;
 }
-/*STYLING FOR BTN */
-/*.colorBtn {*/
-/*    background-image: conic-gradient(var(--darkPurple), var(--darkBlue), var(--pink2), var(--darkPurple));*/
-/*}*/
-
-/*.addBtn {*/
-/*    color: white;*/
-/*    background-image: linear-gradient(to right, var(--blue1), var(--pink1));*/
-/*}*/
-
-/*.edBtn {*/
-/*    color: white;*/
-/*    background-image: linear-gradient(to right, var(--blue2), var(--darkBlue));*/
-/*}*/
-
-/*.rfBtn {*/
-/*    color: white;*/
-/*    background-image: linear-gradient(to right, var(--pblack), var(--blue2));*/
-/*}*/
-
-/*.srBtn {*/
-/*    color: white;*/
-/*    background-image: linear-gradient(to right, var(--pink2), var(--blue2));*/
-/*}*/
 
 /*CARDS STYLING*/
 .cardHeight {
-    height: 95%;
-    width: auto;
+    height: 90%;
+    width: 90%;
     object-fit: contain;
 }
 
 .cardMinHeight {
-    min-height: 50vh;
+    min-height: 25vh;
 }
 
 .hideOption {
@@ -74,30 +27,59 @@
 }
 /*BODY STYLING*/
 body {
-    background-color: darkslateblue;
-}
-/*NAV STYLING*/
-/*nav {*/
-/*    background-color: var(--pblack);;*/
-/*}*/
-
-.hover {
-    opacity: 90;
+    background-color: black;
 }
 
-.sidebar-box {
-    max-height: 120px;
-    position: relative;
-    overflow: hidden;
-}
-.sidebar-box .read-more {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    margin: 0; padding: 30px 0;
 
-    /* "transparent" only works here because == rgba(0,0,0,0) */
-    background-image: linear-gradient(to bottom, transparent, black);
+.box {
+    transition: box-shadow .5s;
+    float: left;
+    padding:.1%;
 }
+.box:hover {
+    box-shadow: 0 0 30px rgba(0,0,0,.6);
+}
+
+.image:hover > .overlay {
+    /*position:absolute;*/
+    background-color:#000;
+    opacity:0.8;
+    /*color:white;*/
+}
+
+.overlay h3, p:hover {
+    /*position:absolute;*/
+    /*background-color:#000;*/
+    opacity:.9;
+    color: white;
+    /*color:white;*/
+}
+
+/*search button*/
+.btn-outline-primary{color:teal;background-color:transparent;background-image:none;border-color:teal}
+.btn-outline-primary:hover{color:#222;background-color:#009a9a;border-color:teal}
+.btn-outline-primary:focus,
+.btn-outline-primary.focus{box-shadow:0 0 0 .2rem rgba(0,128,128,0.5)}
+.btn-outline-primary.disabled,
+.btn-outline-primary:disabled{color:teal;background-color:transparent}
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show>.btn-outline-primary.dropdown-toggle{color:#fff;background-color:#009a9a;border-color:teal}
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show>.btn-outline-primary.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgba(0,128,128,0.5)}
+
+
+/*add button*/
+.btn-outline-add{color:lightgreen;background-color:transparent;background-image:none;border-color:lightgreen}
+.btn-outline-add:hover{color:black;background-color:lightgreen;border-color:lightgreen}
+.btn-outline-add:focus,
+.btn-outline-add.focus{box-shadow:0 0 0 .2rem rgba(0,128,128,0.5)}
+.btn-outline-add.disabled,
+.btn-outline-add:disabled{color:lightgreen;background-color:transparent}
+.btn-outline-add:not(:disabled):not(.disabled):active,
+.btn-outline-add:not(:disabled):not(.disabled).active,
+.show>.btn-outline-add.dropdown-toggle{color:#fff;background-color:lightgreen;border-color:lightgreen}
+.btn-outline-add:not(:disabled):not(.disabled):active:focus,
+.btn-outline-add:not(:disabled):not(.disabled).active:focus,
+.show>.btn-outline-add.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgba(0,128,128,0.5)}
