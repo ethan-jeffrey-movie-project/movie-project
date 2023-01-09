@@ -11,40 +11,35 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <!--   personal custom CSS-->
-    <link rel="stylesheet" href="css/movie-style.css">
-    <!--  google fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="movie-style.css">
 
-
-    <title>JEFF/ETHAN Movie Project</title>
+    <title>jeff-clone</title>
 </head>
 <body>
 <div class="container">
     <div class="row">
 
         <!--START NAV BAR-->
-        <nav class="navbar navbar-expand-lg navbar-dark badge">
+        <nav class="navbar navbar-expand-lg navbar-dark badge pt-5">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Movie Project</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <!--                        ADD/ EDIT DELETE NAV BUTTONS START-->
                         <li>
-                            <button type="button" class="btn addBtn" id="addOptionBtn">ADD</button>
+                            <button type="button" class="btn btn-outline-success" id="addOptionBtn">ADD</button>
                         </li>
                         <li>
-                            <button type="button" class="btn edBtn" id="editOptionBtn">EDIT</button>
+                            <button type="button" class="btn btn-outline-warning" id="editOptionBtn">EDIT</button>
                         </li>
                         <li>
-                            <button type="button" class="btn rfBtn" id="refreshOptionBtn">RELOAD PAGE</button>
+                            <button type="button" class="btn btn-outline-info" id="refreshOptionBtn">RELOAD PAGE</button>
                         </li>
                         <!--                        ADD/ EDIT DELETE NAV BUTTONS START-->
                     </ul>
@@ -52,7 +47,7 @@
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search " aria-label="Search"
                                id="searchMovieInput">
-                        <button class="btn btn-outline-light srBtn" type="button" id="searchMovieBtn">Search</button>
+                        <button type="button" class="btn  btn-outline-primary " id="searchMovieBtn">Search</button>
                     </form>
                     <!--                  SEARCH INPUT END-->
                 </div>
@@ -63,39 +58,43 @@
         <!--		EDIT FORM START-->
         <div id="editMovieOption" class="hideOption under">
             <hr>
-            <label for="editIDInput">INSERT ID</label>
-            <input type="number" id="editIDInput">
-
+            <div class=" d-flex justify-content-center">
+            <label for="editIDInput" class="m-2">INSERT ID</label>
+            <input type="number" id="editIDInput" class="">
+            </div>
             <hr>
             <!--			FORM START-->
-            <div class="row mb-1">
-                <label for="inputTitle" class="form-label text-nowrap">INSERT TITLE</label>
-                <div class="col-sm-10">
+            <div class="row mb-1 d-flex justify-content-center ">
+                <label for="inputTitle" class="form-label text-center">INSERT TITLE</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="inputEditTitle">
                 </div>
             </div>
-            <div class="row mb-1">
-                <label for="inputRating" class="form-label text-nowrap">INSERT RATING</label>
-                <div class="col-sm-10">
+            <div class="row mb-1 d-flex justify-content-center">
+                <label for="inputRating" class="form-label text-center">INSERT RATING</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="inputEditRating">
                 </div>
             </div>
-            <div class="row mb-1">
-                <label for="inputPosterLink" class="form-label text-nowrap">ADD IMG</label>
-                <div class="col-sm-10">
+            <div class="row mb-1 d-flex justify-content-center">
+                <label for="inputPosterLink" class="form-label text-center">ADD IMG</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="inputEditPosterLink">
                 </div>
             </div>
             <!--			FORM END-->
 
             <!--			BTN FOR EDIT FORM START-->
-            <button type="button" class="btn edBtn" id="editMovieSubBtn">EDIT</button>
+            <div class="text-center">
+                <button type="button" class="btn btn-outline-add text-center" id="editMovieSubBtn">EDIT</button>
+            </div>
             <!--			BTN FOR EDIT FORM END-->
+
+
 
 
         </div>
         <!--        EDIT FORM END-->
-
 
 
         <!--             ADD FORM START -->
@@ -103,29 +102,31 @@
 
             <hr>
             <!--			FORM START-->
-            <div class="row mb-1">
-                <label for="inputTitle" class="form-label text-nowrap">ADD MOVIE</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputTitle">
+            <div class="row mb-1 d-flex justify-content-center">
+                <label for="inputTitle" class="form-label  text-center">ADD MOVIE</label>
+                <div class=" col-sm-6 ">
+                    <input type="text" class="form-control " id="inputTitle">
                 </div>
             </div>
 
-            <div class="row mb-1">
-                <label for="inputRating" class="form-label text-nowrap">ADD RATING</label>
-                <div class="col-sm-10">
+            <div class="row mb-1 d-flex justify-content-center">
+                <label for="inputRating" class="form-label text-center">ADD RATING</label>
+                <div class="col-sm-6">
                     <input type="number" class="form-control" id="inputRating" min="0" max="10">
                 </div>
             </div>
-            <div class="row mb-1">
-                <label for="inputPosterLink" class="form-label text-nowrap">ADD IMG</label>
-                <div class="col-sm-10">
+            <div class="row mb-1 d-flex justify-content-center">
+                <label for="inputPosterLink" class="form-label text-center">ADD IMG</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="inputPosterLink">
                 </div>
             </div>
             <!--			FORM END-->
 
             <!--			BTN FORM START-->
-            <button type="button" class="btn addBtn" id="addMovieBtn">ADD</button>
+            <div class="text-center">
+            <button type="button" class="btn btn-outline-add text-center" id="addMovieBtn">ADD</button>
+            </div>
             <!--			BTN FORM END-->
 
         </div>
@@ -138,6 +139,7 @@
             <div id="movieDisplay" class="row">
             </div>
         </div>
+        </div
         <!--        END MOVIE DISPLAY-->
 
     </div>
@@ -148,7 +150,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 <!--Personal custom JS script-->
-<script src="js/movies.js"></script>
+<script src="movies.js"></script>
 
 </body>
 </html>
