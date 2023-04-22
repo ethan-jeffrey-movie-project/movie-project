@@ -1,0 +1,15 @@
+tmdb api
+rotten tomatoes api
+youtube api
+google maps api
+spotigy api
+Netflix Roulette API:
+JustWatch API:
+The Numbers API:
+ScreenScraper API:
+
+axios
+material ui
+jquery
+
+swiper js
