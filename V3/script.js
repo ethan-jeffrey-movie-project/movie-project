@@ -27,9 +27,13 @@ navigator.geolocation.getCurrentPosition(function(position) {
 	// handle error retrieving user's location
 	console.log(error);
 });
+
+
 var swiper = new Swiper(".mySwiper", {
 	scrollbar: {
 		el: ".swiper-scrollbar",
 		hide: true,
 	},
 });
+
+
