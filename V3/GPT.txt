@@ -1,15 +1,10 @@
-tmdb api
-rotten tomatoes api
-youtube api
-google maps api
-spotigy api
-Netflix Roulette API:
-JustWatch API:
-The Numbers API:
-ScreenScraper API:
+tmdb api: provides movies to the user
+rotten tomatoes api: ratings
+spotify api: ##
 
 axios
 material ui
 jquery
 
 swiper js
+
