@@ -1,8 +1,6 @@
 tmdb api: provides movies to the user
 rotten tomatoes api: ratings
-spotify api: ##
 
-axios
 material ui
 jquery
 
