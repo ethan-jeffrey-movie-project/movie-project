@@ -31,21 +31,9 @@ navigator.geolocation.getCurrentPosition(function(position) {
 	console.log(error);
 });
 
-// fetch('navbar.html')
-// 	.then(response => response.text())
-// 	.then(html => {
-// 		const navbarElement = document.querySelector('#navbar');
-// 		navbarElement.innerHTML = html;
-// 	})
-// 	.catch(error => console.log(error));
 
 
-var swiper = new Swiper(".mySwiper", {
-	scrollbar: {
-		el: ".swiper-scrollbar",
-		hide: true,
-	},
-});
+var swiper = new Swiper(".mySwiper", {});
 
 
 document.querySelector('#navbar').innerHTML = navbar;
