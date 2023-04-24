@@ -1,4 +1,7 @@
 import {TMDB_key} from "../keys.js";
+
+import {navbar} from "./navbar.js";
+
 const movie_key = TMDB_key;
 
 navigator.geolocation.getCurrentPosition(function(position) {
@@ -28,6 +31,14 @@ navigator.geolocation.getCurrentPosition(function(position) {
 	console.log(error);
 });
 
+// fetch('navbar.html')
+// 	.then(response => response.text())
+// 	.then(html => {
+// 		const navbarElement = document.querySelector('#navbar');
+// 		navbarElement.innerHTML = html;
+// 	})
+// 	.catch(error => console.log(error));
+
 
 var swiper = new Swiper(".mySwiper", {
 	scrollbar: {
@@ -37,3 +48,4 @@ var swiper = new Swiper(".mySwiper", {
 });
 
 
+document.querySelector('#navbar').innerHTML = navbar;
