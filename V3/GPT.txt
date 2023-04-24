@@ -1,0 +1,20 @@
+tmdb api: provides movies to the user
+rotten tomatoes api: ratings
+
+jquery
+
+swiper js
+
+overview:
+
+Create two forms:
+
+Form 1: My Favorites - displays data from the JSON file and allows users to perform CRUD operations on it (add, edit, delete, rate).
+Form 2: Discover Movies - displays movies from TMDB that the user can scroll through and search for specific movies.
+Whenever the user searches for a specific movie in Form 2, you'll need to make a fetch request to TMDB to get the movie information. You can then compare the movie ID to the IDs in your JSON file to see if the movie is already in your favorites. If the movie is already in your favorites, you'll use the information from the JSON file to display the movie data. If the movie is not in your favorites, you'll use the information from TMDB to display the movie data.
+
+When the user wants to edit a movie, they'll need to do it in Form 1. They can edit the movie data and then save it to the JSON file. The updated data will then be displayed in both Form 1 and Form 2.
+
+Whenever a user rates a movie, the rating data can be saved to the JSON file. This way, the user can see their rating in Form 1 and it will also be displayed in Form 2.
+
+Whenever the user deletes a movie from their favorites in Form 1, the movie data will be removed from the JSON file. This means that the movie will no longer be displayed in either Form 1 or Form 2.
