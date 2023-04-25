@@ -1,5 +1,9 @@
+/** {*/
+/*    border: red solid 1px;*/
+/*}*/
+
 * {
-    border: red solid 1px;
+    outline: dotted red 1px;
 }
 
 .swiper-container {
@@ -22,10 +26,10 @@ body {
     padding: 0;
 }
 
-.swiper {
-    width: 100%;
-    height: 100%;
-}
+/*.swiper {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
 
 .swiper-slide {
     text-align: center;
