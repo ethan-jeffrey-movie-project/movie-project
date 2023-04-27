@@ -1,5 +1,5 @@
-import { TMDB_key } from "../keys.js";
 import { navbar } from "./navbar.js";
+import {TMDB_key} from "../keys.js";
 // import { populateCards } from "./populateCards.js";
 
 const movie_key = TMDB_key;
@@ -20,21 +20,27 @@ function loadHorrorMovies(swiperId) {
 
 				let slideIndex = -1;
 				movies.forEach((movie, index) => {
-					if (index % 4 === 0) {
+					if (index % 5 === 0) {
 						slideIndex++;
 						const slide = document.createElement("div");
 						slide.classList.add("swiper-slide");
 						swiperWrapper.appendChild(slide);
+						slide.classList.add("swiper-slide");
+						slide.classList.add("justify-content-between");
+						slide.classList.add("d-flex");
 					}
 
 					const slide = swiperWrapper.children[slideIndex];
 
 					const card = document.createElement("div");
 					card.classList.add("card");
+					card.style.maxWidth = "19%"
 
 					const img = document.createElement("img");
 					img.classList.add("card-img-top");
-					img.src = `https://image.tmdb.org/t/p/w92/${movie.poster_path}`;
+					img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+					img.style.maxHeight = "90%"
+					img.style.maxWidth = "150px"
 					img.alt = movie.original_title;
 					card.appendChild(img);
 
@@ -89,3 +95,6 @@ function loadHorrorMovies(swiperId) {
 
 
 loadHorrorMovies("horror-swiper");
+
+
+
