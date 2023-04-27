@@ -34,7 +34,7 @@ function loadHorrorMovies(swiperId) {
 
 					const img = document.createElement("img");
 					img.classList.add("card-img-top");
-					img.src = `https://image.tmdb.org/t/p/w154/${movie.poster_path}`;
+					img.src = `https://image.tmdb.org/t/p/w92/${movie.poster_path}`;
 					img.alt = movie.original_title;
 					card.appendChild(img);
 
