@@ -1,21 +1,17 @@
 
 /*
 
-5-7-23
-2311
-
+5-8-23
+2305
 
 * */
-
-
-
 
 import { navbar } from "./navbar.js";
 import { TMDB_key } from "../keys.js";
 
 const movie_key = TMDB_key;
 
-function loadHorrorAndActionMovies(swiperIds, genreIds) {
+function loadMovies(swiperIds, genreIds) {
 	// Use the Geolocation API to get the user's current position
 	navigator.geolocation.getCurrentPosition(
 		function (position) {
@@ -152,4 +148,4 @@ function populateMovies(container, movies, genreId) {
 	});
 }
 
-loadHorrorAndActionMovies(swiperIds,genreIds)
+loadMovies(swiperIds,genreIds)
