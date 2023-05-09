@@ -1,5 +1,9 @@
+/** {*/
+/*    border: red solid 1px;*/
+/*}*/
+
 * {
-    border: red solid 1px;
+    outline: dotted red 1px;
 }
 
 .swiper-container {
@@ -22,10 +26,10 @@ body {
     padding: 0;
 }
 
-.swiper {
-    width: 100%;
-    height: 100%;
-}
+/*.swiper {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
 
 .swiper-slide {
     text-align: center;
@@ -38,7 +42,33 @@ body {
 
 .swiper-slide img {
     display: block;
-    width: 100%;
-    height: 100%;
+    /*width: 100%;*/
+    /*height: 100%;*/
     object-fit: cover;
+}
+
+.card-img-top {
+    /*max-width: 50%;*/
+    /*max-height: 100%;*/
+    object-fit: contain;
+}
+
+.card-title {
+    height: 3rem;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-text {
+    max-height: 10rem;
+    overflow-y: auto;
+}
+
+.card-body {
+    height: 100%;
+    /*display: flex;*/
+    flex-direction: column;
+    justify-content: space-between;
 }
