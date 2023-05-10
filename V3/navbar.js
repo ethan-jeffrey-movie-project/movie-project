@@ -70,4 +70,3 @@ export function handleSearch(swiper) {
 			.catch((error) => console.log(error));
 	});
 }
-// let nmovieimage = `https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?auto=compress&cs=tinysrgb&w=500&h=500&dpr=2`
