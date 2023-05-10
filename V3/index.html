@@ -18,68 +18,56 @@
 	<h1>Discover Movies <a href="Favorites.html">Favorites</a></h1>
 
 	<div class="swiper-container" id="search-swiper">
+		<p>search</p>
 		<div class="swiper-wrapper"></div>
 	</div>
 
-	<div class="swiper-container" id="action-swiper">
-<!--		<p>action</p>-->
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="adventure-swiper">
-<!--		<p>adventure</p>-->
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="animation-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="comedy-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="crime-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="documentary-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="drama-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="family-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="fantasy-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="history-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="horror-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="music-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="mystery-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="romance-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="science-fiction-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="tv-movie-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="thriller-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="war-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
-	<div class="swiper-container" id="western-swiper">
-		<div class="swiper-wrapper"></div>
-	</div>
+	<div id="main-container"></div>
+
+	<script type="text/html" id="template">
+		<div class="swiper-container" id="{{genre}}-swiper">
+			<p>{{genre}}</p>
+			<div class="swiper-wrapper"></div>
+		</div>
+	</script>
+
+	<script>
+		const genres = [
+			'action',
+			'adventure',
+			'animation',
+			'comedy',
+			'crime',
+			'documentary',
+			'drama',
+			'family',
+			'fantasy',
+			'history',
+			'horror',
+			'music',
+			'mystery',
+			'romance',
+			'science-fiction',
+			'tv-movie',
+			'thriller',
+			'war',
+			'western'
+		];
+
+		function createHTML(templateID, genre, id) {
+			var html = document.getElementById(templateID).innerHTML;
+			html = html.replace(/{{genre}}/g, genre);
+			html = html.replace(/{{id}}/g, id);
+			return html;
+		}
+
+		const mainContainer = document.getElementById('main-container');
+		genres.forEach((genre, index) => {
+			const id = `${genre}`;
+			const html = createHTML('template', genre, id);
+			mainContainer.insertAdjacentHTML('beforeend', html);
+		});
+	</script>
 
 </div>
 
