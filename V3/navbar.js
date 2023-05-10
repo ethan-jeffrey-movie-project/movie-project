@@ -1,3 +1,6 @@
+import { TMDB_key } from "../keys.js";
+
+const movie_key = TMDB_key;
 
 export const navbar = `
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -29,11 +32,36 @@ export const navbar = `
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <form class="d-flex" role="search" id="search-form" autocomplete="off">
+        <input class="form-control me-2" type="search" id="search-input" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit" id="search-btn">Search</button>
       </form>
     </div>
   </div>
 </nav>
-`
+`;
+
+export function handleSearch() {
+	const navbarContainer = document.querySelector('#navbar');
+	navbarContainer.innerHTML = navbar;
+
+	const searchForm = document.querySelector('#search-form');
+	const searchInput = document.querySelector('#search-input');
+
+	searchForm.addEventListener('submit', (event) => {
+		event.preventDefault();
+
+		const searchTerm = searchInput.value;
+		const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${movie_key}&language=en-US
+    &query=${searchTerm}&page=1&include_adult=false`;
+
+		fetch(apiUrl)
+			.then(response => response.json())
+			.then(data => {
+				// handle the data and display the results
+				console.log(data);
+				console.log(apiUrl);
+			})
+			.catch(error => console.log(error));
+	});
+}

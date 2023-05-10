@@ -26,3 +26,8 @@ This way, the user can see their rating in Form 1 and it will also be displayed 
 
 Whenever the user deletes a movie from their favorites in Form 1, the movie data will be removed from the JSON file.
 This means that the movie will no longer be displayed in either Form 1 or Form 2.
+
+
+reload , fill the input form with my selection , i get this warning,"form submission canceled because the form is not connected",
+input clears, fill the input form with my selection again , i can see the fetch request in the console along with what i wanted to search for
+

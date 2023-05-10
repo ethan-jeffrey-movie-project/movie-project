@@ -1,9 +1,9 @@
 import {navbar} from "./navbar.js";
 import {populateMovies} from "./populateMovies.js";
+import {handleSearch} from "./navbar.js";
 import { TMDB_key } from "../keys.js";
 
 const movie_key = TMDB_key;
-
 
 export function loadMovies(swiperIds, genreIds) {
 	// Use the Geolocation API to get the user's current position
@@ -43,6 +43,13 @@ export function loadMovies(swiperIds, genreIds) {
 						});
 					});
 
+					// Add event listener to the search button after it has been added to the DOM
+					setTimeout(() => {
+						const searchBtn = document.querySelector('#search-btn');
+						if (searchBtn) {
+							searchBtn.addEventListener('click', handleSearch);
+						}
+					}, 0);
 					document.querySelector("#navbar").innerHTML = navbar;
 				})
 				.catch((error) => {
