@@ -53,19 +53,25 @@ a {
 .movie:hover .movie__infos div,
 .movie:hover .movie__rating,
 .movie:hover .movie__imdb-button {
-    animation: scale-up 0.25s linear;
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 0.25s linear;
 }
 
 /* Movie title */
 .movie__title {
-    animation: scale-down;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.24s ease-in;
     text-transform: uppercase;
 }
 
 /* Movie description */
 .movie__description {
+    opacity: 0;
+    transform: scale(0);
     max-height: 200px;
-    animation: scale-down 0.05s;
+    transition: transform 0.24s ease-in 0.05s;
 }
 
 /* Movie infos */
@@ -86,23 +92,31 @@ a {
 
 /* Movie duration */
 .movie__duration {
-    animation: scale-down 0.15s;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.24s ease-in 0.15s;
 }
 
 /* Movie director */
 .movie__director {
-    animation: scale-down 0.2s;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.24s ease-in 0.20s;
 }
 
 /* Movie year */
 .movie__year {
-    animation: scale-down 0.25s;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.24s ease-in 0.25s;
 }
 
 /* Movie cast */
 .movie__cast {
-    animation: scale-down 0.3s;
+    opacity: 0;
+    transform: scale(0);
     font-size: 0.9em;
+    transition: transform 0.24s ease-in 0.30s;
 }
 
 /* Movie IMDB */
@@ -116,7 +130,9 @@ a {
 
 /* Movie rating */
 .movie__rating {
-    animation: scale-down 0.35s;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.24s ease-in 0.35s;
 }
 
 /* Movie star icon */
