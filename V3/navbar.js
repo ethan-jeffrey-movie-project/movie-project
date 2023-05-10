@@ -1,4 +1,5 @@
 import { TMDB_key } from "../keys.js";
+import {populateMovies} from "./populateMovies.js";
 
 const movie_key = TMDB_key;
 
@@ -41,14 +42,14 @@ export const navbar = `
 </nav>
 `;
 
-export function handleSearch() {
-	const navbarContainer = document.querySelector('#navbar');
+export function handleSearch(swiper) {
+	const navbarContainer = document.querySelector("#navbar");
 	navbarContainer.innerHTML = navbar;
 
-	const searchForm = document.querySelector('#search-form');
-	const searchInput = document.querySelector('#search-input');
+	const searchForm = document.querySelector("#search-form");
+	const searchInput = document.querySelector("#search-input");
 
-	searchForm.addEventListener('submit', (event) => {
+	searchForm.addEventListener("submit", (event) => {
 		event.preventDefault();
 
 		const searchTerm = searchInput.value;
@@ -56,12 +57,17 @@ export function handleSearch() {
     &query=${searchTerm}&page=1&include_adult=false`;
 
 		fetch(apiUrl)
-			.then(response => response.json())
-			.then(data => {
-				// handle the data and display the results
-				console.log(data);
-				console.log(apiUrl);
+			.then((response) => response.json())
+			.then((data) => {
+				const searchSwiperWrapper = document.querySelector(
+					"#search-swiper .swiper-wrapper"
+				);
+				populateMovies(searchSwiperWrapper, data.results, null, swiper);
+
+				// Initialize the Swiper instance
+				swiper.update();
 			})
-			.catch(error => console.log(error));
+			.catch((error) => console.log(error));
 	});
 }
+// let nmovieimage = `https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?auto=compress&cs=tinysrgb&w=500&h=500&dpr=2`

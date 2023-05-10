@@ -52,10 +52,14 @@ export function populateMovies(container, movies, genreId) {
 
 		const img = document.createElement("img");
 		img.classList.add("card-img-top");
-		img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 		img.style.maxHeight = "90%";
 		img.style.maxWidth = "150px";
 		img.alt = movie.original_title;
+		if(movie.poster_path){
+			img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+		} else {
+			img.src = `https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`;
+		}
 		card.appendChild(img);
 
 		const cardBody = document.createElement("div");

@@ -12,7 +12,7 @@ Create two forms:
 Form 1: My Favorites - displays data from the JSON file and allows users to perform CRUD operations on it (add, edit, delete, rate).
 
 Form 2: Discover Movies - displays movies from TMDB that the user can scroll through
-- display genre
+
 and search for specific movies.
 - fix the initial search, you'll get a warning the first time
 - show searched movie
