@@ -3,6 +3,9 @@
     --movie-content-bg: #ddd;
 }
 
+* {
+    outline: dotted red 1px;
+}
 /* Global styles */
 *,
 *::before,
@@ -58,6 +61,12 @@ a {
     transition: transform 0.25s linear;
 }
 
+/*
+🟩🟩🟩🟩🟩🟩
+🟩🟩🟩🟩🟩🟩
+🟩🟩🟩🟩🟩🟩
+*/
+
 /* Movie title */
 .movie__title {
     opacity: 0;
@@ -77,15 +86,11 @@ a {
 /* Movie infos */
 .movie__infos {
     display: grid;
-    grid-gap: 10px 0;
     grid-template-columns: repeat(2, 1fr);
-    align-items: center;
 }
 
 /* Info header */
 .info__head {
-    display: block;
-    margin-bottom: 4px;
     font-weight: bold;
     font-size: 1.1em;
 }
@@ -104,19 +109,35 @@ a {
     transition: transform 0.24s ease-in 0.20s;
 }
 
+
+
+/*
+🟩🟩🟩🟩🟩🟩
+🟩🟩🟩🟩🟩🟩
+🟩🟩🟩🟩🟩🟩
+*/
+
 /* Movie year */
-.movie__year {
+/* Movie year */
+.movie__year,
+.movie__cast,
+.movie__rating {
     opacity: 0;
     transform: scale(0);
-    transition: transform 0.24s ease-in 0.25s;
+    transition: transform 0.24s ease-in;
 }
 
-/* Movie cast */
+.movie__year {
+    transition-delay: 0.25s;
+}
+
 .movie__cast {
-    opacity: 0;
-    transform: scale(0);
     font-size: 0.9em;
-    transition: transform 0.24s ease-in 0.30s;
+    transition-delay: 0.30s;
+}
+
+.movie__rating {
+    transition-delay: 0.35s;
 }
 
 /* Movie IMDB */
@@ -126,13 +147,6 @@ a {
     align-items: center;
     justify-self: flex-end;
     padding: 0 10px;
-}
-
-/* Movie rating */
-.movie__rating {
-    opacity: 0;
-    transform: scale(0);
-    transition: transform 0.24s ease-in 0.35s;
 }
 
 /* Movie star icon */
@@ -165,9 +179,6 @@ a {
     transition: transform 0.24s ease-in, opacity 0.3s linear;
 }
 
-
-
-
 /* Movie IMDB button */
 .movie__imdb-button {
     width: 60px;
@@ -182,7 +193,11 @@ a {
     font-size: 1.1em;
     font-weight: bold;
     cursor: pointer;
-+scaleDown(0.40s);
+    transition: transform 0.4s ease-in-out;
+}
+
+.movie__imdb-button:hover {
+    transform: scale(1.05);
 }
 
 @media screen and (max-width: 768px) {
@@ -203,3 +218,7 @@ a {
         margin-top: 20px;
     }
 }
+
+
+
+
