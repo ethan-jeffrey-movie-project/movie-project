@@ -61,12 +61,6 @@ a {
     transition: transform 0.25s linear;
 }
 
-/*
-🟩🟩🟩🟩🟩🟩
-🟩🟩🟩🟩🟩🟩
-🟩🟩🟩🟩🟩🟩
-*/
-
 /* Movie title */
 .movie__title {
     opacity: 0;
@@ -109,15 +103,6 @@ a {
     transition: transform 0.24s ease-in 0.20s;
 }
 
-
-
-/*
-🟩🟩🟩🟩🟩🟩
-🟩🟩🟩🟩🟩🟩
-🟩🟩🟩🟩🟩🟩
-*/
-
-/* Movie year */
 /* Movie year */
 .movie__year,
 .movie__cast,
