@@ -12,6 +12,7 @@ Create two forms:
 Form 1: My Favorites - displays data from the JSON file and allows users to perform CRUD operations on it (add, edit, delete, rate).
 
 Form 2: Discover Movies - displays movies from TMDB that the user can scroll through
+when they reach the end make a new fetch
 
 and search for specific movies.
 - fix the initial search, you'll get a warning the first time
@@ -40,3 +41,38 @@ This means that the movie will no longer be displayed in either Form 1 or Form 2
 reload , fill the input form with my selection , i get this warning,"form submission canceled because the form is not connected",
 input clears, fill the input form with my selection again , i can see the fetch request in the console along with what i wanted to search for
 
+http://localhost:63342/movie-project/V3/SavedMovies.json?_ijt=gh6a7huvb0oqlbmik8fqe91rkd
+
+https://api.themoviedb.org/3/movie/594767?api_key=214b0c421aba976a138bfac1f35db29b&language=en-US
+
+https://api.themoviedb.org/3/movie/${movieId}?api_key=${movie_key}&language=en-US
+
+
+
+
+
+{
+"SavedMovies"; [
+{
+"title": "The Name of the Wind",
+"author": "Patrick Rothfuss",
+"coverImage": "https://images-na.ssl-images-amazon.com/images/I/91b8oNwaV1L.jpg",
+"description": "also called The Kingkiller Chronicle: Day One, is a fantasy novel written by American author Patrick Rothfuss. It is the first book in a series called The Kingkiller Chronicle and followed by The Wise Man's Fear.",
+"id": 1
+}
+]
+}
+
+{
+"title": "loremupsun",
+"author": "Patrick Rothfuss",
+"coverImage": "https://images-na.ssl-images-amazon.com/images/I/91b8oNwaV1L.jpg",
+"description": "also called The Kingkiller Chronicle: Day One, is a fantasy novel written by American author Patrick Rothfuss. It is the first book in a series called The Kingkiller Chronicle and followed by The Wise Man's Fear.",
+"id": 2
+}
+
+
+
+http://localhost:63342/movie-project/V3/SavedMovies.json
+
+http://localhost:63342/movie-project/V3/SavedMovies.json
