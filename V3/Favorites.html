@@ -15,17 +15,82 @@
 <div id="navbar"></div>
 
 <div class="container mt-5">
-  <h1><a href="index.html">Discover Movies</a> Favorites</h1>
-  <div class="swiper-container">
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum expedita incidunt necessitatibus nobis odio quasi, vel veniam veritatis voluptas voluptatem.</div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-      </div>
+  <h1>favorites <a href="index.html">index</a></h1>
+
+<!--  <div class="swiper-container" id="search-swiper">-->
+<!--    <h1>search</h1>-->
+<!--    <div class="swiper-wrapper"></div>-->
+<!--  </div>-->
+
+  <div id="movies-container"></div>
+
+
+  <div id="main-container"></div>
+
+  <script type="text/html" id="template">
+    <div class="swiper-container" id="{{genre}}-swiper">
+      <h1>{{genre}}</h1>
+      <div class="swiper-wrapper"></div>
     </div>
-  </div>
+  </script>
+
+  <script>
+
+    function displaySavedMovies() {
+      fetch("https://vivid-flawless-almandine.glitch.me/movies")
+              .then(response => response.json())
+              .then(data => {
+                console.log(data); // Log the movies data to the console
+
+                // Display the movies data in the HTML page
+                const moviesContainer = document.getElementById("movies-container");
+                data.forEach(movie => {
+                  // Create elements and append them to moviesContainer to display the movie data
+                });
+              })
+              .catch(error => console.log(error));
+    }
+
+
+    document.addEventListener("DOMContentLoaded", displaySavedMovies);
+
+    const genres = [
+      'action',
+      'adventure',
+      'animation',
+      'comedy',
+      'crime',
+      'documentary',
+      'drama',
+      'family',
+      'fantasy',
+      'history',
+      'horror',
+      'music',
+      'mystery',
+      'romance',
+      'science-fiction',
+      'tv-movie',
+      'thriller',
+      'war',
+      'western'
+    ];
+
+    function createHTML(templateID, genre, id) {
+      var html = document.getElementById(templateID).innerHTML;
+      html = html.replace(/{{genre}}/g, genre);
+      html = html.replace(/{{id}}/g, id);
+      return html;
+    }
+
+    const mainContainer = document.getElementById('main-container');
+    genres.forEach((genre, index) => {
+      const id = `${genre}`;
+      const html = createHTML('template', genre, id);
+      mainContainer.insertAdjacentHTML('beforeend', html);
+    });
+  </script>
+
 </div>
 
 
@@ -40,6 +105,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 
 <script src="../keys.js" type="module"></script>
+<script src="navbar.js" type="module"></script>
 <script src="main.js" type="module"></script>
 </body>
+
 </html>

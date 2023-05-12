@@ -15,7 +15,7 @@
 <div id="navbar"></div>
 
 <div class="container mt-5">
-	<h1>Discover Movies <a href="Favorites.html">Favorites</a></h1>
+	<h1>Discover Movies <a href="Favorites.html" id="discover-movies-link">Favorites</a></h1>
 
 	<div class="swiper-container" id="search-swiper">
 		<h1>search</h1>
@@ -67,6 +67,20 @@
 			const html = createHTML('template', genre, id);
 			mainContainer.insertAdjacentHTML('beforeend', html);
 		});
+
+		 function favoriteMovies() {
+			fetch("https://vivid-flawless-almandine.glitch.me/movies")
+				.then(response => response.json())
+				.then(data => {
+					console.log(data);
+					// Perform any additional processing or rendering here
+				})
+				.catch(error => console.log(error));
+		}
+
+		// Event listener for "Discover Movies" link
+		const discoverMoviesLink = document.querySelector("#discover-movies-link");
+		discoverMoviesLink.addEventListener("click", favoriteMovies);
 	</script>
 
 </div>
