@@ -117,7 +117,7 @@ export function saveMovie(movieId) {
 			console.log(movie);
 			// Add the movie to the JSON file
 			// Replace <json_file_url> with the URL of the JSON file on your server
-			fetch("http://localhost:63342/movie-project/V3/SavedMovies.json", {
+			fetch("https://vivid-flawless-almandine.glitch.me/movies", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
