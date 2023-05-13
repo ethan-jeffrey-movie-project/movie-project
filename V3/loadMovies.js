@@ -42,6 +42,7 @@ export function loadMovies(swiperIds, genreIds) {
 							swiper.slideTo(0);
 						});
 					});
+					<!--seperate this into anothe rfunction start-->
 
 					// Add event listener to the search button after it has been added to the DOM
 					setTimeout(() => {
@@ -55,6 +56,8 @@ export function loadMovies(swiperIds, genreIds) {
 				.catch((error) => {
 					console.log(error);
 				});
+			<!--seperate this into anothe rfunction end-->
+
 		},
 		function (error) {
 			console.log(error);

@@ -23,7 +23,7 @@
 	</div>
 
 	<div id="main-container"></div>
-
+<!--seperate this into anothe rfunction start-->
 	<script type="text/html" id="template">
 		<div class="swiper-container" id="{{genre}}-swiper">
 			<h1>{{genre}}</h1>
@@ -67,6 +67,7 @@
 			const html = createHTML('template', genre, id);
 			mainContainer.insertAdjacentHTML('beforeend', html);
 		});
+		<!--seperate this into anothe rfunction strt-->
 
 		 function favoriteMovies() {
 			fetch("https://vivid-flawless-almandine.glitch.me/movies")
@@ -81,7 +82,10 @@
 		// Event listener for "Discover Movies" link
 		const discoverMoviesLink = document.querySelector("#discover-movies-link");
 		discoverMoviesLink.addEventListener("click", favoriteMovies);
+		<!--seperate this into anothe rfunction ned-->
+
 	</script>
+	<!--seperate this into anothe rfunction end -->
 
 </div>
 
@@ -101,10 +105,10 @@
 <script src="navbar.js" type="module"></script>
 <script src="main.js" type="module"></script>
 
-<!-- comment this out  for the function on fetchMovies.js-->
+<!-- comment this out  for the function on _fetchMovies.js-->
 <!--<script type="module">-->
-<!--	import {loadMoviesByGenres} from "./fetchMovies.js";-->
-<!--	import { genres } from "./fetchMovies.js";-->
+<!--	import {loadMoviesByGenres} from "./_fetchMovies.js";-->
+<!--	import { genres } from "./_fetchMovies.js";-->
 <!--	loadMoviesByGenres(genres)-->
 <!--</script>-->
 </body>
