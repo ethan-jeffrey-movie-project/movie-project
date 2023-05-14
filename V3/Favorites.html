@@ -77,17 +77,25 @@
                   description.textContent = movie.overview;
                   cardBody.appendChild(description);
 
-                  const button = document.createElement("a");
-                  button.classList.add("btn", "btn-danger");
-                  button.href = "#";
-                  button.textContent = "delete";
-                  button.addEventListener("click", () => deleteMovie(movie.id));
-                  cardBody.appendChild(button);
+                  const deleteButton = document.createElement("a");
+                  deleteButton.classList.add("btn", "btn-danger");
+                  deleteButton.href = "#";
+                  deleteButton.textContent = "delete";
+                  deleteButton.addEventListener("click", () => deleteMovie(movie.id));
+                  cardBody.appendChild(deleteButton);
+
+                  const modifyButton = document.createElement("a");
+                  modifyButton.classList.add("btn", "btn-primary");
+                  modifyButton.href = "#";
+                  modifyButton.textContent = "modify";
+                  modifyButton.addEventListener("click", () => modifyMovie(movie.id));
+                  cardBody.appendChild(modifyButton);
 
                   card.appendChild(cardBody);
 
                   const swiperSlide = document.createElement("div");
                   swiperSlide.classList.add("swiper-slide");
+                  swiperSlide.setAttribute("data-id", movie.id); // Set the data-id attribute
                   swiperSlide.appendChild(card);
 
                   swiperWrapper.appendChild(swiperSlide);
@@ -100,6 +108,40 @@
               })
               .catch(error => console.log(error));
     }
+
+
+    function modifyMovie(movieId) {
+      // Find the movie element in the DOM based on its ID
+      const movieElement = document.querySelector(`#saved-swiper [data-id="${movieId}"]`);
+      if (!movieElement) {
+        console.log(`Movie with ID ${movieId} not found.`);
+        return;
+      }
+
+      // Get the new title from the user
+      const newTitle = prompt("Enter the new title:");
+
+      // Update the movie title in the DOM
+      const titleElement = movieElement.querySelector(".card-title");
+      if (titleElement) {
+        titleElement.textContent = newTitle;
+      }
+
+      // Send a request to the server to save the modified movie
+      const url = `https://vivid-flawless-almandine.glitch.me/movies/${movieId}`;
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ title: newTitle })
+      })
+              .then(response => response.json())
+              .then(data => console.log("Movie modified:", data))
+              .catch(error => console.log("Error modifying movie:", error));
+    }
+
+
 
     function deleteMovie(movieId) {
       fetch(`https://vivid-flawless-almandine.glitch.me/movies/${movieId}`, {
