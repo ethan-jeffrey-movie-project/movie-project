@@ -46,14 +46,9 @@
                 // Clear the swiper wrapper
                 swiperWrapper.innerHTML = "";
 
-
-
                 // Iterate over the saved movies and create card elements to display the movie data
                 data.forEach(movie => {
-
-
                   const card = document.createElement("div");
-
                   card.classList.add("card");
                   card.style.maxWidth = "19%";
 
@@ -62,7 +57,7 @@
                   img.style.maxHeight = "90%";
                   img.style.maxWidth = "150px";
                   img.alt = movie.original_title;
-                  if(movie.poster_path){
+                  if (movie.poster_path) {
                     img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
                   } else {
                     img.src = `https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`;
@@ -86,6 +81,7 @@
                   button.classList.add("btn", "btn-danger");
                   button.href = "#";
                   button.textContent = "delete";
+                  button.addEventListener("click", () => deleteMovie(movie.id));
                   cardBody.appendChild(button);
 
                   card.appendChild(cardBody);
@@ -104,6 +100,21 @@
               })
               .catch(error => console.log(error));
     }
+
+    function deleteMovie(movieId) {
+      fetch(`https://vivid-flawless-almandine.glitch.me/movies/${movieId}`, {
+        method: "DELETE"
+      })
+              .then(response => response.json())
+              .then(data => {
+                console.log(data); // Log the response data
+
+                // Update the displayed movies after deletion
+                displaySavedMovies();
+              })
+              .catch(error => console.log(error));
+    }
+
 
 
 
