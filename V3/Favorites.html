@@ -22,7 +22,7 @@
     <div class="swiper-wrapper"></div>
   </div>
 
-  <div id="movies-container"></div>
+<!--  <div id="movies-container"></div>-->
 
 
   <div id="main-container"></div>
@@ -41,30 +41,70 @@
               .then(response => response.json())
               .then(data => {
                 console.log(data);
-                const moviesContainer = document.getElementById("movies-container");
+                const swiperWrapper = document.querySelector("#saved-swiper .swiper-wrapper");
 
-                // Clear the movies container
-                moviesContainer.innerHTML = "";
+                // Clear the swiper wrapper
+                swiperWrapper.innerHTML = "";
 
-                // Iterate over the saved movies and create elements to display the movie data
+
+
+                // Iterate over the saved movies and create card elements to display the movie data
                 data.forEach(movie => {
-                  const movieElement = document.createElement("div");
-                  movieElement.classList.add("movie");
 
-                  const titleElement = document.createElement("h2");
-                  titleElement.textContent = movie.title;
-                  movieElement.appendChild(titleElement);
 
-                  const descriptionElement = document.createElement("p");
-                  descriptionElement.textContent = movie.overview;
-                  movieElement.appendChild(descriptionElement);
+                  const card = document.createElement("div");
 
-                  // Append the movie element to the movies container
-                  moviesContainer.appendChild(movieElement);
+                  card.classList.add("card");
+                  card.style.maxWidth = "19%";
+
+                  const img = document.createElement("img");
+                  img.classList.add("card-img-top");
+                  img.style.maxHeight = "90%";
+                  img.style.maxWidth = "150px";
+                  img.alt = movie.original_title;
+                  if(movie.poster_path){
+                    img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+                  } else {
+                    img.src = `https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`;
+                  }
+                  card.appendChild(img);
+
+                  const cardBody = document.createElement("div");
+                  cardBody.classList.add("card-body");
+
+                  const title = document.createElement("h5");
+                  title.classList.add("card-title");
+                  title.textContent = movie.title;
+                  cardBody.appendChild(title);
+
+                  const description = document.createElement("p");
+                  description.classList.add("card-text");
+                  description.textContent = movie.overview;
+                  cardBody.appendChild(description);
+
+                  const button = document.createElement("a");
+                  button.classList.add("btn", "btn-danger");
+                  button.href = "#";
+                  button.textContent = "delete";
+                  cardBody.appendChild(button);
+
+                  card.appendChild(cardBody);
+
+                  const swiperSlide = document.createElement("div");
+                  swiperSlide.classList.add("swiper-slide");
+                  swiperSlide.appendChild(card);
+
+                  swiperWrapper.appendChild(swiperSlide);
+                });
+
+                // Initialize the Swiper instance
+                const savedSwiper = new Swiper("#saved-swiper", {
+                  // Swiper configuration options
                 });
               })
               .catch(error => console.log(error));
     }
+
 
 
     document.addEventListener("DOMContentLoaded", displaySavedMovies);
