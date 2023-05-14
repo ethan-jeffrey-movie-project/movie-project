@@ -17,10 +17,10 @@
 <div class="container mt-5">
   <h1>favorites <a href="index.html">index</a></h1>
 
-<!--  <div class="swiper-container" id="search-swiper">-->
-<!--    <h1>search</h1>-->
-<!--    <div class="swiper-wrapper"></div>-->
-<!--  </div>-->
+  <div class="swiper-container" id="saved-swiper">
+    <h1>saved movies</h1>
+    <div class="swiper-wrapper"></div>
+  </div>
 
   <div id="movies-container"></div>
 
@@ -40,12 +40,27 @@
       fetch("https://vivid-flawless-almandine.glitch.me/movies")
               .then(response => response.json())
               .then(data => {
-                console.log(data); // Log the movies data to the console
-
-                // Display the movies data in the HTML page
+                console.log(data);
                 const moviesContainer = document.getElementById("movies-container");
+
+                // Clear the movies container
+                moviesContainer.innerHTML = "";
+
+                // Iterate over the saved movies and create elements to display the movie data
                 data.forEach(movie => {
-                  // Create elements and append them to moviesContainer to display the movie data
+                  const movieElement = document.createElement("div");
+                  movieElement.classList.add("movie");
+
+                  const titleElement = document.createElement("h2");
+                  titleElement.textContent = movie.title;
+                  movieElement.appendChild(titleElement);
+
+                  const descriptionElement = document.createElement("p");
+                  descriptionElement.textContent = movie.overview;
+                  movieElement.appendChild(descriptionElement);
+
+                  // Append the movie element to the movies container
+                  moviesContainer.appendChild(movieElement);
                 });
               })
               .catch(error => console.log(error));
