@@ -59,6 +59,9 @@ implement a loading wheel
 - when getting information from tmdb
 
 
+
+
+
 https://api.themoviedb.org/3/movie/594767?api_key=214b0c421aba976a138bfac1f35db29b&language=en-US
 
 https://api.themoviedb.org/3/movie/${movieId}?api_key=${movie_key}&language=en-US
