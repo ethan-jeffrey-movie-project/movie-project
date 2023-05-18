@@ -1,14 +1,220 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>codepen</title>
+	<title>favorites</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+	      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 	<link rel="stylesheet" href="codepenIO.css">
 </head>
 <body>
+
 <div class="movies__container"></div>
 
 <script src="codepenIO.js"></script>
+<br>
+<div id="navbar"></div>
 
+<div class="container mt-5">
+	<div class="swiper-container" id="saved-swiper">
+		<h1>saved movies</h1>
+		<div class="swiper-wrapper"></div>
+	</div>
+
+	<div id="main-container"></div>
+
+	<script type="text/html" id="template">
+		<div class="swiper-container" id="{{genre}}-swiper">
+			<h1>{{genre}}</h1>
+			<div class="swiper-wrapper"></div>
+		</div>
+	</script>
+
+	<script>
+
+		function displaySavedMovies() {
+			fetch("https://vivid-flawless-almandine.glitch.me/movies")
+				.then(response => response.json())
+				.then(data => {
+					console.log(data);
+					const swiperWrapper = document.querySelector("#saved-swiper .swiper-wrapper");
+
+					// Clear the swiper wrapper
+					swiperWrapper.innerHTML = "";
+
+					// Iterate over the saved movies and create card elements to display the movie data
+					data.forEach(movie => {
+						const card = document.createElement("div");
+						card.classList.add("card");
+						card.style.maxWidth = "19%";
+
+						const img = document.createElement("img");
+						img.classList.add("card-img-top");
+						img.style.maxHeight = "90%";
+						img.style.maxWidth = "150px";
+						img.alt = movie.original_title;
+						if (movie.poster_path) {
+							img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+						} else {
+							img.src = `https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`;
+						}
+						card.appendChild(img);
+
+						const cardBody = document.createElement("div");
+						cardBody.classList.add("card-body");
+
+						const title = document.createElement("h5");
+						title.classList.add("card-title");
+						title.textContent = movie.title;
+						cardBody.appendChild(title);
+
+						const description = document.createElement("p");
+						description.classList.add("card-text");
+						description.textContent = movie.overview;
+						cardBody.appendChild(description);
+
+						const deleteButton = document.createElement("a");
+						deleteButton.classList.add("btn", "btn-danger");
+						deleteButton.href = "#";
+						deleteButton.textContent = "delete";
+						deleteButton.addEventListener("click", () => deleteMovie(movie.id));
+						cardBody.appendChild(deleteButton);
+
+						const modifyButton = document.createElement("a");
+						modifyButton.classList.add("btn", "btn-primary");
+						modifyButton.href = "#";
+						modifyButton.textContent = "modify";
+						modifyButton.addEventListener("click", () => modifyMovie(movie.id));
+						cardBody.appendChild(modifyButton);
+
+						card.appendChild(cardBody);
+
+						const swiperSlide = document.createElement("div");
+						swiperSlide.classList.add("swiper-slide");
+						swiperSlide.setAttribute("data-id", movie.id); // Set the data-id attribute
+						swiperSlide.appendChild(card);
+
+						swiperWrapper.appendChild(swiperSlide);
+					});
+
+					// Initialize the Swiper instance
+					const savedSwiper = new Swiper("#saved-swiper", {
+						// Swiper configuration options
+					});
+				})
+				.catch(error => console.log(error));
+		}
+
+
+		function modifyMovie(movieId) {
+			// Find the movie element in the DOM based on its ID
+			const movieElement = document.querySelector(`#saved-swiper [data-id="${movieId}"]`);
+			if (!movieElement) {
+				console.log(`Movie with ID ${movieId} not found.`);
+				return;
+			}
+
+			// Get the new title from the user
+			const newTitle = prompt("Enter the new title:");
+
+			// Update the movie title in the DOM
+			const titleElement = movieElement.querySelector(".card-title");
+			if (titleElement) {
+				titleElement.textContent = newTitle;
+			}
+
+			// Send a request to the server to save the modified movie
+			const url = `https://vivid-flawless-almandine.glitch.me/movies/${movieId}`;
+			fetch(url, {
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({ title: newTitle })
+			})
+				.then(response => response.json())
+				.then(data => console.log("Movie modified:", data))
+				.catch(error => console.log("Error modifying movie:", error));
+		}
+
+
+
+		function deleteMovie(movieId) {
+			fetch(`https://vivid-flawless-almandine.glitch.me/movies/${movieId}`, {
+				method: "DELETE"
+			})
+				.then(response => response.json())
+				.then(data => {
+					console.log(data); // Log the response data
+
+					// Update the displayed movies after deletion
+					displaySavedMovies();
+				})
+				.catch(error => console.log(error));
+		}
+
+
+
+
+		document.addEventListener("DOMContentLoaded", displaySavedMovies);
+
+		const genres = [
+			'action',
+			'adventure',
+			'animation',
+			'comedy',
+			'crime',
+			'documentary',
+			'drama',
+			'family',
+			'fantasy',
+			'history',
+			'horror',
+			'music',
+			'mystery',
+			'romance',
+			'science-fiction',
+			'tv-movie',
+			'thriller',
+			'war',
+			'western'
+		];
+
+		function createHTML(templateID, genre, id) {
+			var html = document.getElementById(templateID).innerHTML;
+			html = html.replace(/{{genre}}/g, genre);
+			html = html.replace(/{{id}}/g, id);
+			return html;
+		}
+
+		const mainContainer = document.getElementById('main-container');
+		genres.forEach((genre, index) => {
+			const id = `${genre}`;
+			const html = createHTML('template', genre, id);
+			mainContainer.insertAdjacentHTML('beforeend', html);
+		});
+	</script>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+
+<script src="../../keys.js" type="module"></script>
+<script src="../navbar.js" type="module"></script>
+<script src="../main.js" type="module"></script>
 </body>
+
 </html>
