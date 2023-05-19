@@ -88,12 +88,40 @@ const movies = [
 		poster:
 			"https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_CR0,0,677,1000_AL_.jpg",
 	},
+	{
+		title: "The Silence of the Lambs",
+		description:
+			"A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.",
+		duration: "118",
+		year: "1991",
+		director: "Jonathan Demme",
+		cast: ["Jodie Foster", "Anthony Hopkins", "Lawrence A. Bonney"],
+		rating: 8.6,
+		imdbLink: "https://www.imdb.com/title/tt0102926/",
+		poster:
+			"https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_CR0,0,677,1000_AL_.jpg",
+	},
+	{
+		title: "The Silence of the Lambs",
+		description:
+			"A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.",
+		duration: "118",
+		year: "1991",
+		director: "Jonathan Demme",
+		cast: ["Jodie Foster", "Anthony Hopkins", "Lawrence A. Bonney"],
+		rating: 8.6,
+		imdbLink: "https://www.imdb.com/title/tt0102926/",
+		poster:
+			"https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_CR0,0,677,1000_AL_.jpg",
+	},
 ];
 
 const App = (movies) => {
 	const moviesList = movies.map((movie) => Movie({ infos: movie }));
 	const container = document.querySelector(".movies__container");
+	const swiperWrapper = document.querySelector(".swiper-slide");
 	container.innerHTML = moviesList.join("");
+	swiperWrapper.innerHTML = moviesList.join("");
 };
 
 App(movies);
