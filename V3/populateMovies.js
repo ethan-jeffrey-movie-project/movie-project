@@ -59,10 +59,11 @@ export function populateMovies(container, movies, genreId) {
 		img.style.maxHeight = "90%";
 		img.style.maxWidth = "150px";
 		img.alt = movie.original_title;
-		if(movie.poster_path){
-			img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+		if(movie.backdrop_path
+		){
+			img.src = `https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}`;
 		} else {
-			img.src = `https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`;
+			img.src = `https://images.pexels.com/photos/695644/pexels-photo-695644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`;
 		}
 		card.appendChild(img);
 
@@ -135,3 +136,10 @@ export function saveMovie(movieId) {
 
 // http://localhost:63342/movie-project/V3/SavedMovies.json
 
+
+// https://image.tmdb.org/t/p/w1280/zPEDfWece7gg1I0904KFFVUq5mg.jpg
+
+// w300
+// w780
+// w1280
+// original

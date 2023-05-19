@@ -23,6 +23,7 @@ export function loadMovies(swiperIds, genreIds) {
 			// Make the API requests and handle the responses
 			Promise.all(genreUrls.map((url) => fetch(url).then((response) => response.json())))
 				.then((responses) => {
+					console.log(responses);
 					// Filter the responses to get the movies for each genre
 					const genreMovies = responses.map((response, index) => {
 						return response.results.filter((movie) => movie.genre_ids.includes(genreIds[index]));
