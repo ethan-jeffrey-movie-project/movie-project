@@ -1,3 +1,7 @@
+import { TMDB_key } from "../keys.js";
+import {populateMovies} from "./populateMovies.js";
+
+const movie_key = TMDB_key;
 
 export const navbar = `
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -19,7 +23,7 @@ export const navbar = `
             Dropdown
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="cartwheel.html">cartwheel</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -29,11 +33,40 @@ export const navbar = `
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <form class="d-flex" role="search" id="search-form" autocomplete="off">
+        <input class="form-control me-2" type="search" id="search-input" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit" id="search-btn">Search</button>
       </form>
     </div>
   </div>
 </nav>
-`
+`;
+
+export function handleSearch(swiper) {
+	const navbarContainer = document.querySelector("#navbar");
+	navbarContainer.innerHTML = navbar;
+
+	const searchForm = document.querySelector("#search-form");
+	const searchInput = document.querySelector("#search-input");
+
+	searchForm.addEventListener("submit", (event) => {
+		event.preventDefault();
+
+		const searchTerm = searchInput.value;
+		const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${movie_key}&language=en-US
+    &query=${searchTerm}&page=1&include_adult=false`;
+
+		fetch(apiUrl)
+			.then((response) => response.json())
+			.then((data) => {
+				const searchSwiperWrapper = document.querySelector(
+					"#search-swiper .swiper-wrapper"
+				);
+				populateMovies(searchSwiperWrapper, data.results, null, swiper);
+
+				// Initialize the Swiper instance
+				swiper.update();
+			})
+			.catch((error) => console.log(error));
+	});
+}

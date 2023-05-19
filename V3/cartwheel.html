@@ -2,28 +2,24 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>ScreenSurf</title>
+	<title>cartwheel</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
 	      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="cartwheel.css">
 </head>
 <body>
 
 <div id="navbar"></div>
 
 <div class="container mt-5">
-	<h1>Discover Movies <a href="Favorites.html" id="discover-movies-link">Favorites</a></h1>
-
-	<div class="swiper-container" id="search-swiper">
-		<h1>search</h1>
-		<div class="swiper-wrapper"></div>
-	</div>
+	<h1>cartwheel <a href="Favorites.html" id="discover-movies-link">cartwheel</a></h1>
 
 	<div id="main-container"></div>
-<!--seperate this into anothe rfunction start-->
+	<!--seperate this into anothe rfunction start-->
 	<script type="text/html" id="template">
 		<div class="swiper-container" id="{{genre}}-swiper">
 			<h1>{{genre}}</h1>
@@ -67,26 +63,19 @@
 			const html = createHTML('template', genre, id);
 			mainContainer.insertAdjacentHTML('beforeend', html);
 		});
-		<!--seperate this into anothe rfunction strt-->
-
-		 function favoriteMovies() {
-			fetch("https://vivid-flawless-almandine.glitch.me/movies")
-				.then(response => response.json())
-				.then(data => {
-					console.log(data);
-					// Perform any additional processing or rendering here
-				})
-				.catch(error => console.log(error));
-		}
-
-		// Event listener for "Discover Movies" link
-		const discoverMoviesLink = document.querySelector("#discover-movies-link");
-		discoverMoviesLink.addEventListener("click", favoriteMovies);
-		<!--seperate this into anothe rfunction ned-->
-
 	</script>
-	<!--seperate this into anothe rfunction end -->
 
+</div>
+
+<div class="deal-wheel">
+	<ul class="spinner"></ul>
+	<figure class="cap">
+		<div class="grim-reaper" data-reaction="resting">
+
+		</div> <!-- Add this line -->
+	</figure>
+	<div class="ticker"></div>
+	<button class="btn-spin">Spin the wheel</button>
 </div>
 
 
@@ -101,6 +90,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 
+<script src="./cartwheel.js" type="module"></script>
 <script src="../keys.js" type="module"></script>
 <script src="navbar.js" type="module"></script>
 <script src="main.js" type="module"></script>

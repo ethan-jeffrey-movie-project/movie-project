@@ -1,5 +1,9 @@
 
 
+import { TMDB_key } from "../keys.js";
+
+const movie_key = TMDB_key;
+
 export const genres = [
 	{ id: 28, name: "Action" },
 	{ id: 12, name: "Adventure" },
@@ -52,10 +56,14 @@ export function populateMovies(container, movies, genreId) {
 
 		const img = document.createElement("img");
 		img.classList.add("card-img-top");
-		img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 		img.style.maxHeight = "90%";
 		img.style.maxWidth = "150px";
 		img.alt = movie.original_title;
+		if(movie.poster_path){
+			img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+		} else {
+			img.src = `https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`;
+		}
 		card.appendChild(img);
 
 		const cardBody = document.createElement("div");
@@ -71,6 +79,11 @@ export function populateMovies(container, movies, genreId) {
 		description.textContent = movie.overview;
 		cardBody.appendChild(description);
 
+		const id = document.createElement("p");
+		id.classList.add("card-text");
+		id.textContent = movie.id;
+		cardBody.appendChild(id);
+
 		// Add a different class to the card depending on its genre
 		if (movie.genre_ids.includes(genreId)) {
 			card.classList.add(`${genre.name.toLowerCase()}-swiper`);
@@ -82,7 +95,43 @@ export function populateMovies(container, movies, genreId) {
 		button.textContent = "Add to Favorites";
 		cardBody.appendChild(button);
 
+		const button2 = document.createElement("a");
+		button2.classList.add("btn", "btn-secondary");
+		button2.href = "#";
+		button2.textContent = "save";
+		button2.addEventListener("click", function() {
+			saveMovie(movie.id);
+		});
+		cardBody.appendChild(button2);
+
 		card.appendChild(cardBody);
 		slide.appendChild(card);
 	});
 }
+
+export function saveMovie(movieId) {
+	console.log(movieId)
+	fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${movie_key}&language=en-US`)
+		.then(response => response.json())
+		.then(movie => {
+			console.log(movie);
+			// Add the movie to the JSON file
+			// Replace <json_file_url> with the URL of the JSON file on your server
+			fetch("https://vivid-flawless-almandine.glitch.me/movies", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(movie)
+			})
+				.then(response => response.json())
+				.then(data => console.log(data))
+				.catch(error => console.log(error));
+		})
+		.catch(error => console.log(error));
+}
+
+
+
+// http://localhost:63342/movie-project/V3/SavedMovies.json
+
