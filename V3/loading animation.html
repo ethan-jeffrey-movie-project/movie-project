@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--  <link rel="stylesheet" href="styles.css">-->
+
+  <style>
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #111;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .spinner {
+      display: grid;
+      grid-template-columns: repeat(3, 20px);
+      grid-template-rows: repeat(3, 20px);
+      grid-gap: 5px;
+      justify-items: center;
+      align-items: center;
+    }
+
+    .square {
+      width: 20px;
+      height: 20px;
+      border-radius: 3px;
+      box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+      animation: scaleInOut 1s infinite;
+    }
+
+    @keyframes scaleInOut {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.7);
+      }
+    }
+
+
+  </style>
+  <title>Loading Spinner</title>
+</head>
+<body>
+<div class="spinner">
+  <div class="square" id="s1"></div>
+  <div class="square" id="s2"></div>
+  <div class="square" id="s3"></div>
+  <div class="square" id="s4"></div>
+  <div class="square" id="s5"></div>
+  <div class="square" id="s6"></div>
+  <div class="square" id="s7"></div>
+  <div class="square" id="s8"></div>
+  <div class="square" id="s9"></div>
+</div>
+<!--<script src="script.js"></script>-->
+
+<script>
+
+  const squares = document.querySelectorAll(".square");
+
+  const gradientColors = [
+    "#0033cc",
+    "#0040ff",
+    "#3366ff",
+    "#4d88ff",
+    "#4d88ff",
+    "#4d88ff",
+    "#3366ff",
+    "#0040ff",
+    "#0033cc",
+  ];
+
+  squares.forEach((square, index) => {
+    square.style.backgroundColor = gradientColors[index];
+    square.style.animationDelay = `${index * 0.125}s`;
+  });
+
+
+</script>
+</body>
+</html>
