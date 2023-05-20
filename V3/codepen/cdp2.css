@@ -2,6 +2,10 @@ html {
     scroll-behavior: smooth;
 }
 
+* {
+    outline: red 1px dotted;
+}
+
 body {
     margin: 0;
     background-color: #000;
