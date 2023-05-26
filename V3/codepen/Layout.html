@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .full-width-img {
+      width: 100%;
+      height: auto;
+      position: relative;
+      z-index: -1;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      outline: red solid 1px;
+    }
+
+    /*🟩*/
+
+    .container {
+      padding: 10px;
+    }
+
+    .a {
+      background-color: rgba(141, 182, 247, 0.5);
+      text-align: center;
+      padding: 10px;
+    }
+
+    .b, .c {
+      background-color: rgba(227, 185, 250, 0.5);
+      text-align: center;
+      padding: 10px;
+    }
+
+    @media (max-width: 576px) {
+      .b, .c {
+        margin-top: 20px;
+      }
+    }
+
+
+  </style>
+  <title>Bootstrap Image Overlay</title>
+</head>
+<body>
+<div class="container-fluid p-0">
+  <div class="row no-gutters">
+    <div class="col-12">
+      <img class="full-width-img" src="https://cdn.dribbble.com/userupload/5919110/file/original-4fd69ed014f2e248f331b3ce341bee69.png?compress=1&resize=1905x1429" alt="Background Image">
+      <div class="overlay"></div>
+      <div class="content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; padding: 10px; color: #fff; text-align: center;">
+        <div class="container">
+
+          <div class="row">
+            <div class="col-3 a">
+              <h1>THIS IS MY BlUE CONTAINER</h1>
+            </div>
+            <div class="col-9 a">
+              <h1>THIS IS MY BlUE CONTAINER</h1>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-3 b">
+              <h1>THIS IS MY pink CONTAINER</h1>
+            </div>
+
+            <div class="col-9 c">
+              <h1>THIS IS MY pink CONTAINER</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
