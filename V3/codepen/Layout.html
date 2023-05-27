@@ -26,9 +26,9 @@
       background-color: rgba(0, 0, 0, 0.5);
     }
 
-    /** {*/
-    /*  outline: red solid 1px;*/
-    /*}*/
+    * {
+      outline: red solid 1px;
+    }
 
     /*🟩*/
 
@@ -47,7 +47,7 @@
   <title>Bootstrap Image Overlay</title>
 </head>
 <body>
-
+<!--<div>-->
 <!--<ul>-->
 <!--  <li style="background-color: rgba(141, 182, 247, 0.1); text-align: center; padding: 10px;">Generation 1</li>-->
 <!--  <li style="background-color: rgba(141, 182, 247, 0.2); text-align: center; padding: 10px;">Generation 2</li>-->
@@ -109,30 +109,43 @@
 <!--  <li style="background-color: rgba(255, 20, 147, 0.6); text-align: center; padding: 10px;">Generation 14</li>-->
 <!--  <li style="background-color: rgba(255, 165, 0, 0.5); text-align: center; padding: 10px;">Generation 15</li>-->
 <!--</ul>-->
+<!--</div>-->
 
 
 <div class="container-fluid p-0">
   <div class="row no-gutters">
     <div class="col-12">
-      <img class="full-width-img" src="https://cdn.dribbble.com/userupload/5919110/file/original-4fd69ed014f2e248f331b3ce341bee69.png?compress=1&resize=1905x1429" alt="Background Image">
-      <div class="overlay"></div>
-      <div class="content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; padding: 0; color: #fff; text-align: center;">
+
+<!--      🟩🟩🟩🟩🟩🟩 uncomment thsi and delete class content to use the img-->
+<!--      <img class="full-width-img" src="https://cdn.dribbble.com/userupload/5919110/file/original-4fd69ed014f2e248f331b3ce341bee69.png?compress=1&resize=1905x1429" alt="Background Image">-->
+<!--      <div class="overlay"></div>-->
+<!--      <div class="content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; padding: 0; color: #fff; text-align: center;">-->
+
+      <div class="content">
 
         <div class="container" style="padding: 0">
 
           <div class="row">
 
             <div class="col-3 A" style="background-color: rgba(255, 192, 203, 0.6); text-align: center; padding: 10px; display: flex; align-items: center;">
-              <div class="spinner-grow" role="status"></div>
-              <p style="margin-left: 10px; flex-grow: 1;">top left</p>
+              <p style="margin-left: 10px; flex-grow: 1;">movie surf</p>
             </div>
 
             <div class="col-9 A" style="background-color: rgba(247, 201, 110, 0.6); text-align: center; padding: 10px;">
-              <div class="input-group">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" class="btn btn-outline-primary">search</button>
+              <div class="d-flex justify-content-between">
+
+                <div class="input-group col-5">
+                  <button type="button" class="btn btn-outline-primary"> < </button>
+                </div>
+
+                <div class="input-group col-5">
+                  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                  <button type="button" class="btn btn-outline-primary">Search</button>
+                </div>
+
               </div>
             </div>
+
 
           </div>
 
@@ -140,46 +153,72 @@
             <div class="col-3 C" style="background-color: rgba(141, 182, 247, 0.5); text-align: center; padding: 5px; display: flex; flex-direction: column; justify-content: space-between;">
 
               <div class="container">
-                <div class="row-6" style="background-color: rgba(255, 255, 0, 0.3); text-align: center; padding: 4px;display: flex; flex-direction: column; justify-content: space-between;">
-                  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                    <button type="button" class="btn btn-primary mb-2 ">Button</button>
-                    <button type="button" class="btn btn-primary mb-2">Button</button>
-                    <button type="button" class="btn btn-primary mb-2">Button</button>
-                    <button type="button" class="btn btn-primary mb-2">Button</button>
-                    <button type="button" class="btn btn-primary mb-2">Button</button>
-                    <button type="button" class="btn btn-primary mb-2">Button</button>
+                <div class="row-6" style="background-color: rgba(255, 255, 0, 0.3); text-align: center; padding: 5px; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div class="scrollable-buttons" style="height: 265px; overflow-y: auto;">
+                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">HORROR</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">HORROR</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                      <button type="button" class="btn btn-primary mb-2 rounded-pill">Genres</button>
+                    </div>
                   </div>
                 </div>
               </div>
+
+
+              <span><a class="btn btn-primary disabled placeholder col-10"></a></span>
 
               <div class="container">
                 <div class="row-6" style="background-color: rgba(255, 255, 0, 0.3); text-align: center; padding: 5px; display: flex; flex-direction: column; justify-content: space-between;">
                   <div class="btn-group-vertical d-flex" role="group" aria-label="Vertical button group">
-                    <button type="button" class="btn btn-primary mb-2 ">Button</button>
-                    <button type="button" class="btn btn-primary mb-2">Button</button>
-                    <button type="button" class="btn btn-primary mb-2">Button</button>
-                    <button type="button" class="btn btn-primary mb-2">Button</button>
-                    <button type="button" class="btn btn-primary mb-2">Button</button>
-                    <button type="button" class="btn btn-primary mb-2">Button</button>
+                    <button type="button" class="btn btn-primary mb-2 rounded-pill">FAVORITES</button>
+                    <button type="button" class="btn btn-primary mb-2 rounded-pill">WHEEL</button>
+                    <button type="button" class="btn btn-primary mb-2 rounded-pill">QUIZ</button>
                   </div>
                 </div>
               </div>
 
-
             </div>
 
-
-
-            <div class="col-9 ">
-              <div class="row ">
+            <div class="col-9">
+              <div class="row">
                 <div class="b row-9">
-                  <img src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Top Image" class="img-fluid">
+                  <img src="https://image.tmdb.org/t/p/w1280//94TIUEhuwv8PhdIADEvSuwPljS5.jpg" alt="Top Image" class="img-fluid">
                 </div>
 
                 <div class="container" style="background-color: rgba(162, 196, 226, 0.5); text-align: center; padding: 0;">
                   <div class="row-1">
-                    <div class="c col-12" style="background-color: rgba(162, 196, 226, 0.5); text-align: center; padding: 0;">
-                      <p>continue to watch, scroll, popular, dropdown</p>
+                    <div class="c col-12" style="background-color: rgba(255, 0, 255, 0.3); text-align: center; padding: 0;">
+<!--                      <p>continue to watch, scroll, popular, dropdown</p>-->
+                      <div class="d-flex justify-content-between">
+
+                        <div class="input-group col-5">
+                          <button type="button" class="btn btn-outline-primary"> < </button>
+                        </div>
+
+                        <div class="input-group col-5">
+                          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                          <button type="button" class="btn btn-outline-primary">Search</button>
+                        </div>
+
+                      </div>
+
                     </div>
                     <div class="row-1" style="background-color: rgba(141, 182, 247, 0.5); text-align: center; padding: 0; display: flex; flex-direction: row; justify-content: space-between;">
 
@@ -199,10 +238,42 @@
                           <p class="card-text"><small>Last updated 3 mins ago</small></p>
                         </div>
                       </div>
+                      <div class="card text-bg-dark">
+                        <img src="https://images.pexels.com/photos/194096/pexels-photo-194096.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="card-img" alt="...">
+                        <div class="card-img-overlay" style="background-color: rgba(222, 197, 186, 0.7);">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a wider card wl content. This content is a little bit longer.</p>
+                          <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                        </div>
+                      </div>
 
+                    </div>
+                    <div class="row-1" style="background-color: rgba(141, 182, 247, 0.5); text-align: center; padding: 0; display: flex; flex-direction: row; justify-content: space-between;">
 
-
-
+                      <div class="card text-bg-dark">
+                        <img src="https://images.pexels.com/photos/194096/pexels-photo-194096.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="card-img" alt="...">
+                        <div class="card-img-overlay">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a wider card wl content. This content is a little bit longer.</p>
+                          <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                        </div>
+                      </div>
+                      <div class="card text-bg-dark">
+                        <img src="https://images.pexels.com/photos/194096/pexels-photo-194096.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="card-img" alt="...">
+                        <div class="card-img-overlay">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a wider card wl content. This content is a little bit longer.</p>
+                          <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                        </div>
+                      </div>
+                      <div class="card text-bg-dark">
+                        <img src="https://images.pexels.com/photos/194096/pexels-photo-194096.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="card-img" alt="...">
+                        <div class="card-img-overlay" style="background-color: rgba(222, 197, 186, 0.7);">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a wider card wl content. This content is a little bit longer.</p>
+                          <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                        </div>
+                      </div>
 
                     </div>
                   </div>
