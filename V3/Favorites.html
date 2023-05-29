@@ -9,6 +9,12 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    #main-container {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -57,8 +63,8 @@
                   img.style.maxHeight = "90%";
                   img.style.maxWidth = "150px";
                   img.alt = movie.original_title;
-                  if (movie.poster_path) {
-                    img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+                  if (movie.backdrop_path) {
+                    img.src = `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`;
                   } else {
                     img.src = `https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`;
                   }

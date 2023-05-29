@@ -59,10 +59,11 @@ export function populateMovies(container, movies, genreId) {
 		img.style.maxHeight = "90%";
 		img.style.maxWidth = "150px";
 		img.alt = movie.original_title;
-		if(movie.poster_path){
-			img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+		if (movie.backdrop_path) {
+			img.src = `https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}`;
 		} else {
-			img.src = `https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`;
+			img.src =
+				"https://images.pexels.com/photos/695644/pexels-photo-695644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
 		}
 		card.appendChild(img);
 
@@ -98,14 +99,22 @@ export function populateMovies(container, movies, genreId) {
 		const button2 = document.createElement("a");
 		button2.classList.add("btn", "btn-secondary");
 		button2.href = "#";
-		button2.textContent = "save";
-		button2.addEventListener("click", function() {
+		button2.textContent = "Save";
+		button2.addEventListener("click", function () {
 			saveMovie(movie.id);
 		});
 		cardBody.appendChild(button2);
 
 		card.appendChild(cardBody);
 		slide.appendChild(card);
+
+		// Add click event listener to update the image, title, and description
+		card.addEventListener("click", function () {
+			document.getElementById("clickImg").src = img.src;
+			document.getElementById("clickTitle").textContent =
+				movie.original_title;
+			document.getElementById("clickAbout").textContent = movie.overview;
+		});
 	});
 }
 
@@ -135,3 +144,10 @@ export function saveMovie(movieId) {
 
 // http://localhost:63342/movie-project/V3/SavedMovies.json
 
+
+// https://image.tmdb.org/t/p/w1280/zPEDfWece7gg1I0904KFFVUq5mg.jpg
+
+// w300
+// w780
+// w1280
+// original

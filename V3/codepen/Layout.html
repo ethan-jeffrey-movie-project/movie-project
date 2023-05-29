@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .full-width-img {
+            width: 100%;
+            height: auto;
+            position: relative;
+            z-index: -1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            outline: red solid 1px;
+        }
+
+        /*🟩*/
+
+        .container {
+            padding: 10px;
+        }
+
+
+        @media (max-width: 576px) {
+            .b, .c {
+                margin-top: 20px;
+            }
+        }
+
+	</style>
+	<title>Bootstrap Image Overlay</title>
+	<link rel="stylesheet" href="Layout.css">
+	<link rel="stylesheet" href="codepenIO.css">
+</head>
+<body>
+
+
+<div class="container-fluid p-0">
+	<div class="row no-gutters">
+		<div class="col-12">
+
+			<!--      🟩🟩🟩🟩🟩🟩 uncomment thsi and delete class content to use the img-->
+			<!--      <img class="full-width-img" src="https://cdn.dribbble.com/userupload/5919110/file/original-4fd69ed014f2e248f331b3ce341bee69.png?compress=1&resize=1905x1429" alt="Background Image">-->
+			<!--      <div class="overlay"></div>-->
+			<!--      <div class="content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; padding: 0; color: #fff; text-align: center;">-->
+
+			<div class="content">
+
+				<div class="container" style="padding: 0">
+					<!--   🟩🟩🟩🟩🟩TITLE, SEARCH BAR🟩🟩🟩🟩    -->
+
+					<div class="row sticky-top">
+						<!--   🟩🟩🟩🟩🟩movie surf🟩🟩🟩🟩    -->
+						<div class="col-3 A movie-title"
+						     style="background-color: rgba(255, 192, 203, 0.6); text-align: center; padding: 10px; display: flex; align-items: center;">
+							<p style="margin-left: 10px; flex-grow: 1;">movie surf</p>
+						</div>
+
+						<!--   🟩🟩🟩🟩🟩TOP SEARCH BAR🟩🟩🟩🟩    -->
+						<div class="col-9 A top-container"
+						     style="background-color: rgba(247, 201, 110, 0.6); text-align: center; padding: 10px; position: sticky; top: 0;">
+							<div class="d-flex justify-content-between">
+								<div class="input-group col-5 open">
+									<button type="button" class="btn btn-outline-primary toggle-btn"> <</button>
+									<!-- <p style="margin-left: 10px; flex-grow: 1;">movie surf</p> -->
+								</div>
+								<div class="input-group col-5">
+									<input type="search" class="form-control rounded" placeholder="Search"
+									       aria-label="Search" aria-describedby="search-addon"/>
+									<button type="button" class="btn btn-outline-primary">Search</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row ">
+						<!--   🟩🟩🟩🟩 GENRE, FAVORITES🟩🟩🟩🟩🟩    -->
+						<div class="col-3 C side-bar"
+						     style="  background-color: var(--color-1);
+						     text-align: center;
+						     padding: 9px;
+						     display: flex;
+						     flex-direction: column;
+						     justify-content: space-between;">
+
+							<div style=" background-color: lightsteelblue; padding-top: 10vh" class="sticky-top">
+
+							<!--   🟩🟩🟩🟩🟩GENRE🟩🟩🟩🟩    -->
+							<div class="container " style="padding-top: 3vh; padding-bottom: 5vh;background-color: var(--color-10)">
+								<div class="row-6"
+								     style="background-color: var(--color-5);
+								     text-align: center;
+								     padding: 0;
+								     display: flex;
+								     flex-direction: column;
+								     justify-content: space-between;"
+								>
+									<div class="scrollable-buttons" style="height: 265px; overflow-y: auto;">
+										<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">HORROR
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">HORROR
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+											<button type="button" class="btn btn-primary mb-2 rounded-pill">Genres
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<span class="" style="padding: 2vh">
+								<a class="btn btn-primary disabled placeholder col-10 "></a>
+							</span>
+
+							<!--   🟩🟩🟩🟩FAVORITES🟩🟩🟩🟩    -->
+							<div class="container " style="padding-bottom: 10vh;background-color: var(--color-10)" >
+								<div class="row-6"
+								     style="background-color: rgba(255, 255, 0, 0.3);
+								     text-align: center;
+								     padding: 0;
+								     display: flex;
+								     flex-direction: column;
+								     justify-content: space-between;">
+									<div class="btn-group-vertical d-flex" role="group"
+									     aria-label="Vertical button group">
+										<button type="button" class="btn btn-primary mb-2 rounded-pill">FAVORITES
+										</button>
+										<button type="button" class="btn btn-primary mb-2 rounded-pill">WHEEL</button>
+										<button type="button" class="btn btn-primary mb-2 rounded-pill">QUIZ</button>
+									</div>
+								</div>
+							</div>
+							</div>
+
+						</div>
+
+						<div class="col-9 imgContainer">
+							<div class="row">
+								<!--   🟩🟩🟩🟩 IMAGE 🟩🟩🟩🟩🟩    -->
+								<div class="b row-9">
+									<img src="https://image.tmdb.org/t/p/w1280//94TIUEhuwv8PhdIADEvSuwPljS5.jpg"
+									     alt="Top Image" class="img-fluid">
+								</div>
+
+                <!--   🟩🟩🟩🟩CARDS🟩🟩🟩🟩🟩    -->
+								<div class="container"
+								     style="background-color: rgba(162, 196, 226, 0.5); text-align: center; padding: 0;">
+
+									<div class="row-1">
+										<!--   🟩🟩🟩🟩🟩 IMG BOXES🟩🟩🟩🟩    -->
+										<div class="d-flex justify-content-between">
+										<p style=" background-color: rgba(0, 0, 255, 0.5);" class="col-5">This Genre</p>
+										<p style=" background-color: white" class="col-5 ">This Genre</p>
+										</div>
+
+										<div class="row-1"
+										     style="background-color: rgba(141, 182, 247, 0.5); text-align: center; padding: 0; display: flex; flex-direction: row; justify-content: space-between;">
+											<div class="card text-bg-dark">
+												<img src="https://image.tmdb.org/t/p/w1280/suw8eyL3YwE4wfzPQ0cLR02k0Gh.jpg"
+												     class="card-img" alt="...">
+												<div class="card-img-overlay">
+													<h5 class="card-title">Card title</h5>
+													<p class="card-text">This is a wider card wl content. This content
+														is a little bit longer.</p>
+													<p class="card-text"><small>Last updated 3 mins ago</small></p>
+												</div>
+											</div>
+											<div class="card text-bg-dark">
+												<img src="https://image.tmdb.org/t/p/w1280/suw8eyL3YwE4wfzPQ0cLR02k0Gh.jpg"
+												     class="card-img" alt="...">
+												<div class="card-img-overlay">
+													<h5 class="card-title">Card title</h5>
+													<p class="card-text">This is a wider card wl content. This content
+														is a little bit longer.</p>
+													<p class="card-text"><small>Last updated 3 mins ago</small></p>
+												</div>
+											</div>
+											<div class="card text-bg-dark">
+												<img src="https://image.tmdb.org/t/p/w1280/suw8eyL3YwE4wfzPQ0cLR02k0Gh.jpg"
+												     class="card-img" alt="...">
+												<div class="card-img-overlay"
+												     style="background-color: rgba(222, 197, 186, 0.7);">
+													<h5 class="card-title">Card title</h5>
+													<p class="card-text">This is a wider card wl content. This content
+														is a little bit longer.</p>
+													<p class="card-text"><small>Last updated 3 mins ago</small></p>
+												</div>
+											</div>
+											<div class="card text-bg-dark firstFourthCard" style="display: none">
+												<img src="https://image.tmdb.org/t/p/w1280/suw8eyL3YwE4wfzPQ0cLR02k0Gh.jpg"
+												     class="card-img" alt="...">
+												<div class="card-img-overlay"
+												     style="background-color: rgba(0, 0, 255, 0.5);">
+													<h5 class="card-title">Card title</h5>
+													<p class="card-text">This is a wider card wl content. This content
+														is a little bit longer.</p>
+													<p class="card-text"><small>Last updated 3 mins ago</small></p>
+												</div>
+											</div>
+										</div>
+
+										<div class="d-flex justify-content-between">
+											<p style=" background-color: var(--color-1)" class="col-5">This Genre</p>
+											<p style=" background-color: white" class="col-5 ">This Genre</p>
+										</div>
+
+
+										<div class="row-1 movieCards"
+										     style="background-color: rgba(141, 182, 247, 0.5); text-align: center; padding: 0; display: flex; flex-direction: row; justify-content: space-between;">
+											<div class="card text-bg-dark">
+												<img src="https://image.tmdb.org/t/p/w1280/suw8eyL3YwE4wfzPQ0cLR02k0Gh.jpg"
+												     class="card-img" alt="...">
+												<div class="card-img-overlay">
+													<h5 class="card-title">Card title</h5>
+													<p class="card-text">This is a wider card wl content. This content
+														is a little bit longer.</p>
+													<p class="card-text"><small>Last updated 3 mins ago</small></p>
+												</div>
+											</div>
+											<div class="card text-bg-dark">
+												<img src="https://image.tmdb.org/t/p/w1280/suw8eyL3YwE4wfzPQ0cLR02k0Gh.jpg"
+												     class="card-img" alt="...">
+												<div class="card-img-overlay">
+													<h5 class="card-title">Card title</h5>
+													<p class="card-text">This is a wider card wl content. This content
+														is a little bit longer.</p>
+													<p class="card-text"><small>Last updated 3 mins ago</small></p>
+												</div>
+											</div>
+											<div class="card text-bg-dark">
+												<img src="https://image.tmdb.org/t/p/w1280/suw8eyL3YwE4wfzPQ0cLR02k0Gh.jpg"
+												     class="card-img" alt="...">
+												<div class="card-img-overlay"
+												     style="background-color: rgba(222, 197, 186, 0.7);">
+													<h5 class="card-title">Card title</h5>
+													<p class="card-text">This is a wider card wl content. This content
+														is a little bit longer.</p>
+													<p class="card-text"><small>Last updated 3 mins ago</small></p>
+												</div>
+											</div>
+											<div class="card text-bg-dark secondFourthCard" style="display: none">
+												<img src="https://image.tmdb.org/t/p/w1280/suw8eyL3YwE4wfzPQ0cLR02k0Gh.jpg"
+												     class="card-img" alt="...">
+												<div class="card-img-overlay"
+												     style="background-color: rgba(0, 0, 255, 0.5);">
+													<h5 class="card-title">Card title</h5>
+													<p class="card-text">This is a wider card wl content. This content
+														is a little bit longer.</p>
+													<p class="card-text"><small>Last updated 3 mins ago</small></p>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="codepenIO.js" type="module"></script>
+
+<script>
+
+	const toggleBtn = document.querySelector('.toggle-btn');
+	const sideBar = document.querySelector('.side-bar');
+	const movieTitle = document.querySelector('.movie-title');
+	const topContainer = document.querySelector('.top-container');
+	const imgContainer = document.querySelector('.imgContainer');
+	const fourthCard = document.querySelector('.firstFourthCard');
+	const violetCard = document.querySelector('.secondFourthCard');
+
+
+
+	toggleBtn.addEventListener('click', () => {
+		toggleBtn.parentElement.classList.toggle('open');
+		//condensed
+		if (sideBar.style.display === 'none') {
+			sideBar.style.display = 'flex';
+			movieTitle.style.display = 'flex';
+			fourthCard.style.display= 'none';
+			violetCard.style.display= 'none';
+			topContainer.classList.remove('col-12');
+			topContainer.classList.add('col-9');
+			imgContainer.classList.remove('col-12');
+			imgContainer.classList.add('col-9');
+		} else {
+			//expanded
+			sideBar.style.display = 'none';
+			movieTitle.style.display = 'none';
+			fourthCard.style.display= 'flex';
+			violetCard.style.display= 'flex';
+			topContainer.classList.remove('col-9');
+			topContainer.classList.add('col-12');
+			imgContainer.classList.remove('col-9');
+			imgContainer.classList.add('col-12');
+		}
+
+
+	});
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+<!--
+
+backdrop: https://image.tmdb.org/t/p/w1280/suw8eyL3YwE4wfzPQ0cLR02k0Gh.jpg
+poster path: https://image.tmdb.org/t/p/w1280/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg
+
+-->

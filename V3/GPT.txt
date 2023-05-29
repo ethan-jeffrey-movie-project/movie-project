@@ -54,20 +54,9 @@ implement the cartwheel
 - only display title
 -spin wheel button will spin again and display the movie title
 
-implement a loading wheel
-- implement when switching to differerent html
-- when getting information from tmdb
-
-
-
-
-
 https://api.themoviedb.org/3/movie/594767?api_key=214b0c421aba976a138bfac1f35db29b&language=en-US
 
 https://api.themoviedb.org/3/movie/${movieId}?api_key=${movie_key}&language=en-US
-
-
-
 
 
 use this for url
@@ -78,3 +67,5 @@ https://vivid-flawless-almandine.glitch.me/movies/${movie_id}
 
 to get specific movie
 https://vivid-flawless-almandine.glitch.me/movies/${movie_id}
+
+
