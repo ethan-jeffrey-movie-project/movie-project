@@ -117,29 +117,45 @@ export function populateMovies(container, movies, genreId) {
 		}
 
 		const button = document.createElement("a");
-		button.classList.add("btn", "btn-secondary", "blue");
+		button.classList.add("btn", "btn-secondary", "blue", "p-1");
 		button.href = "javascript:void()";
 		button.textContent = "ignore";
-		cardBody.appendChild(button);
 
 		const button2 = document.createElement("a");
-		button2.classList.add("btn", "btn-secondary", "blue");
+		button2.classList.add("btn", "btn-secondary", "blue", "p-1");
 		button2.href = "#";
 		button2.textContent = "Save";
 		button2.addEventListener("click", function () {
 			saveMovie(movie.id);
 		});
-		cardBody.appendChild(button2);
+
+		const buttonsContainer = document.createElement("div");
+		buttonsContainer.classList.add("d-flex", "justify-content-evenly", "p-2" );
+		buttonsContainer.appendChild(button);
+		buttonsContainer.appendChild(button2);
+
+		cardBody.appendChild(buttonsContainer);
 
 		card.appendChild(cardBody);
 		slide.appendChild(card);
 
 		// Add click event listener to update the image, title, and description
 		card.addEventListener("click", function () {
-			document.getElementById("clickImg").src = img2.src;
+			const clickImg = document.getElementById("clickImg");
+			clickImg.src = img2.src;
+			clickImg.classList.add("p-1");
+
 			document.getElementById("clickTitle").textContent = movie.original_title;
 			document.getElementById("clickAbout").textContent = movie.overview;
+
+			const RATING = document.getElementById("rating").textContent = movie.vote_average;
+			RATING.classList.style.backgroundColor = "var(--color-1)";
+
+			document.getElementById("genres").textContent = movie.genre_ids;
+			document.getElementById("release_date").textContent = movie.release_date;
 		});
+
+
 	});
 }
 
