@@ -56,34 +56,60 @@ export function populateMovies(container, movies, genreId) {
 
 		const img = document.createElement("img");
 		img.classList.add("card-img-top");
-		img.style.maxHeight = "90%";
-		img.style.maxWidth = "150px";
+		img.style.height = "100%"; // Update to take up the whole view
+		img.style.width = "100%"; // Update to take up the whole view
 		img.alt = movie.original_title;
-		if (movie.backdrop_path) {
-			img.src = `https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}`;
+		if (movie.poster_path) {
+			img.src = `https://image.tmdb.org/t/p/w1280/${movie.poster_path}`;
 		} else {
 			img.src =
 				"https://images.pexels.com/photos/695644/pexels-photo-695644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
 		}
 		card.appendChild(img);
 
-		const cardBody = document.createElement("div");
-		cardBody.classList.add("card-body");
+		const img2 = document.createElement("img");
+		img2.classList.add("card-img-top");
+		img2.style.maxHeight = "90%";
+		img2.style.maxWidth = "150px";
+		img2.alt = movie.original_title;
+		if (movie.backdrop_path) {
+			img2.src = `https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}`;
+		} else {
+			img2.src =
+				"https://images.pexels.com/photos/695644/pexels-photo-695644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+		}
+		// card.appendChild(img2);
 
-		const title = document.createElement("h5");
+		const cardBody = document.createElement("div");
+		cardBody.classList.add("p-3");
+		cardBody.classList.add("card-body");
+		cardBody.style.backgroundColor = "var(--color-1)"
+
+		const title = document.createElement("h6");
 		title.classList.add("card-title");
 		title.textContent = movie.original_title;
 		cardBody.appendChild(title);
 
-		const description = document.createElement("p");
-		description.classList.add("card-text");
-		description.textContent = movie.overview;
-		cardBody.appendChild(description);
+		const rating = document.createElement("p");
+		rating.classList.add("card-rating");
+		rating.textContent = movie.vote_average;
+		cardBody.appendChild(rating);
 
-		const id = document.createElement("p");
-		id.classList.add("card-text");
-		id.textContent = movie.id;
-		cardBody.appendChild(id);
+		const genres = document.createElement("p");
+		genres.classList.add("card-genres", "pb-3", "m-0");
+		// genres.classList.add("pb-1");
+		genres.textContent = movie.genre_ids;
+		cardBody.appendChild(genres);
+
+		// const description = document.createElement("p");
+		// description.classList.add("card-text");
+		// description.textContent = movie.overview;
+		// cardBody.appendChild(description);
+		//
+		// const id = document.createElement("p");
+		// id.classList.add("card-text");
+		// id.textContent = movie.id;
+		// cardBody.appendChild(id);
 
 		// Add a different class to the card depending on its genre
 		if (movie.genre_ids.includes(genreId)) {
@@ -91,13 +117,13 @@ export function populateMovies(container, movies, genreId) {
 		}
 
 		const button = document.createElement("a");
-		button.classList.add("btn", "btn-primary");
-		button.href = "#";
-		button.textContent = "Add to Favorites";
+		button.classList.add("btn", "btn-secondary", "blue");
+		button.href = "javascript:void()";
+		button.textContent = "ignore";
 		cardBody.appendChild(button);
 
 		const button2 = document.createElement("a");
-		button2.classList.add("btn", "btn-secondary");
+		button2.classList.add("btn", "btn-secondary", "blue");
 		button2.href = "#";
 		button2.textContent = "Save";
 		button2.addEventListener("click", function () {
@@ -110,9 +136,8 @@ export function populateMovies(container, movies, genreId) {
 
 		// Add click event listener to update the image, title, and description
 		card.addEventListener("click", function () {
-			document.getElementById("clickImg").src = img.src;
-			document.getElementById("clickTitle").textContent =
-				movie.original_title;
+			document.getElementById("clickImg").src = img2.src;
+			document.getElementById("clickTitle").textContent = movie.original_title;
 			document.getElementById("clickAbout").textContent = movie.overview;
 		});
 	});
@@ -141,6 +166,14 @@ export function saveMovie(movieId) {
 }
 
 
+
+/*
+
+	backdrop: https://image.tmdb.org/t/p/w1280/suw8eyL3YwE4wfzPQ0cLR02k0Gh.jpg
+
+	poster path: https://image.tmdb.org/t/p/w1280/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg
+
+*/
 
 // http://localhost:63342/movie-project/V3/SavedMovies.json
 
