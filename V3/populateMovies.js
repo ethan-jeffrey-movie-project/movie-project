@@ -33,7 +33,48 @@ export function populateMovies(container, movies, genreId) {
 	container.innerHTML = "";
 	let slideIndex = -1;
 
-	const genre = genres.find((g) => g.id === genreId);
+	// const genre = genres.find((g) => g.id === genreId);
+
+	let genreName = '';
+	if (genreId === 28) {
+		console.log("action")
+	} else if (genreId === 12) {
+		genreName = 'Adventure';
+	} else if (genreId === 16) {
+		genreName = 'Animation';
+	} else if (genreId === 35) {
+		genreName = 'Comedy';
+	} else if (genreId === 80) {
+		genreName = 'Crime';
+	} else if (genreId === 99) {
+		genreName = 'Documentary';
+	} else if (genreId === 18) {
+		genreName = 'Drama';
+	} else if (genreId === 10751) {
+		genreName = 'Family';
+	} else if (genreId === 14) {
+		genreName = 'Fantasy';
+	} else if (genreId === 36) {
+		genreName = 'History';
+	} else if (genreId === 27) {
+		genreName = 'Horror';
+	} else if (genreId === 10402) {
+		genreName = 'Music';
+	} else if (genreId === 9648) {
+		genreName = 'Mystery';
+	} else if (genreId === 10749) {
+		genreName = 'Romance';
+	} else if (genreId === 878) {
+		genreName = 'Science-Fiction';
+	} else if (genreId === 10770) {
+		genreName = 'TV-Movie';
+	} else if (genreId === 53) {
+		genreName = 'Thriller';
+	} else if (genreId === 10752) {
+		genreName = 'War';
+	} else if (genreId === 37) {
+		genreName = 'Western';
+	}
 
 	movies.forEach((movie, index) => {
 		// Create a new slide every 5th movie
@@ -112,8 +153,11 @@ export function populateMovies(container, movies, genreId) {
 		// cardBody.appendChild(id);
 
 		// Add a different class to the card depending on its genre
+		// if (movie.genre_ids.includes(genreId)) {
+		// 	card.classList.add(`${genre.name.toLowerCase()}-swiper`);
+		// }
 		if (movie.genre_ids.includes(genreId)) {
-			card.classList.add(`${genre.name.toLowerCase()}-swiper`);
+			card.classList.add(`${genreName.toLowerCase()}-swiper`);
 		}
 
 		const button = document.createElement("a");
@@ -139,6 +183,57 @@ export function populateMovies(container, movies, genreId) {
 		card.appendChild(cardBody);
 		slide.appendChild(card);
 
+		const genresParagraph = document.createElement("p");
+		genresParagraph.classList.add("card-genres", "pb-3", "m-0");
+
+		const genreNames = movie.genre_ids.map(id => {
+			let genreName = '';
+			if (id === 28) {
+				genreName = 'Action';
+			} else if (id === 12) {
+				genreName = 'Adventure';
+			} else if (id === 16) {
+				genreName = 'Animation';
+			} else if (id === 35) {
+				genreName = 'Comedy';
+			} else if (id === 80) {
+				genreName = 'Crime';
+			} else if (id === 99) {
+				genreName = 'Documentary';
+			} else if (id === 18) {
+				genreName = 'Drama';
+			} else if (id === 10751) {
+				genreName = 'Family';
+			} else if (id === 14) {
+				genreName = 'Fantasy';
+			} else if (id === 36) {
+				genreName = 'History';
+			} else if (id === 27) {
+				genreName = 'Horror';
+			} else if (id === 10402) {
+				genreName = 'Music';
+			} else if (id === 9648) {
+				genreName = 'Mystery';
+			} else if (id === 10749) {
+				genreName = 'Romance';
+			} else if (id === 878) {
+				genreName = 'Science-Fiction';
+			} else if (id === 10770) {
+				genreName = 'TV-Movie';
+			} else if (id === 53) {
+				genreName = 'Thriller';
+			} else if (id === 10752) {
+				genreName = 'War';
+			} else if (id === 37) {
+				genreName = 'Western';
+			}
+			return genreName;
+		});
+
+		genresParagraph.textContent = genreNames.join(', ');
+
+		cardBody.appendChild(genresParagraph);
+
 		// Add click event listener to update the image, title, and description
 		card.addEventListener("click", function () {
 			const clickImg = document.getElementById("clickImg");
@@ -147,13 +242,59 @@ export function populateMovies(container, movies, genreId) {
 
 			document.getElementById("clickTitle").textContent = movie.original_title;
 			document.getElementById("clickAbout").textContent = movie.overview;
+			document.getElementById("Rating").textContent = "average rating " + movie.vote_average;
 
-			const RATING = document.getElementById("rating").textContent = movie.vote_average;
-			RATING.classList.style.backgroundColor = "var(--color-1)";
+			let genreNames = [];
+			for (let i = 0; i < movie.genre_ids.length; i++) {
+				let genreName = '';
+				if (movie.genre_ids[i] === 28) {
+					genreName = 'Action';
+				} else if (movie.genre_ids[i] === 12) {
+					genreName = 'Adventure';
+				} else if (movie.genre_ids[i] === 16) {
+					genreName = 'Animation';
+				} else if (movie.genre_ids[i] === 35) {
+					genreName = 'Comedy';
+				} else if (movie.genre_ids[i] === 80) {
+					genreName = 'Crime';
+				} else if (movie.genre_ids[i] === 99) {
+					genreName = 'Documentary';
+				} else if (movie.genre_ids[i] === 18) {
+					genreName = 'Drama';
+				} else if (movie.genre_ids[i] === 10751) {
+					genreName = 'Family';
+				} else if (movie.genre_ids[i] === 14) {
+					genreName = 'Fantasy';
+				} else if (movie.genre_ids[i] === 36) {
+					genreName = 'History';
+				} else if (movie.genre_ids[i] === 27) {
+					genreName = 'Horror';
+				} else if (movie.genre_ids[i] === 10402) {
+					genreName = 'Music';
+				} else if (movie.genre_ids[i] === 9648) {
+					genreName = 'Mystery';
+				} else if (movie.genre_ids[i] === 10749) {
+					genreName = 'Romance';
+				} else if (movie.genre_ids[i] === 878) {
+					genreName = 'Science-Fiction';
+				} else if (movie.genre_ids[i] === 10770) {
+					genreName = 'TV-Movie';
+				} else if (movie.genre_ids[i] === 53) {
+					genreName = 'Thriller';
+				} else if (movie.genre_ids[i] === 10752) {
+					genreName = 'War';
+				} else if (movie.genre_ids[i] === 37) {
+					genreName = 'Western';
+				}
+				if (genreName !== '') {
+					genreNames.push(genreName);
+				}
+			}
 
-			document.getElementById("genres").textContent = movie.genre_ids;
-			document.getElementById("release_date").textContent = movie.release_date;
+			document.getElementById("clickGenres").textContent = "Genres: " + genreNames.join(', ');
+			document.getElementById("release_date").textContent = "Release Date: " + movie.release_date;
 		});
+
 
 
 	});
