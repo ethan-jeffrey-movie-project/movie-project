@@ -75,7 +75,7 @@
 
                   const title = document.createElement("h5");
                   title.classList.add("card-title");
-                  title.textContent = movie.title;
+                  title.textContent = movie.original_title;
                   cardBody.appendChild(title);
 
                   const description = document.createElement("p");
@@ -123,79 +123,80 @@
         return;
       }
 
-      // Get the current title from the movie element
+      // Get the current title and overview from the movie element
       const titleElement = movieElement.querySelector(".card-title");
       const currentTitle = titleElement.textContent;
+      const overviewElement = movieElement.querySelector(".card-text");
+      const currentOverview = overviewElement.textContent;
 
-      // Create the form element
-      const form = document.createElement("form");
-
-      // Create the input field for the new title
-      const titleLabel = document.createElement("label");
-      titleLabel.textContent = "New Title:";
-      const titleInput = document.createElement("input");
-      titleInput.setAttribute("type", "text");
-      titleInput.classList.add("form-control");
-      titleInput.value = currentTitle;
-      titleLabel.appendChild(titleInput);
-      form.appendChild(titleLabel);
-
-      // Create the submit button
-      const submitButton = document.createElement("button");
-      submitButton.classList.add("btn", "btn-primary");
-      submitButton.setAttribute("type", "submit");
-      submitButton.textContent = "Submit";
-      form.appendChild(submitButton);
-
-      // Add event listener to the form submission
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-        // Disable the submit button to prevent multiple submissions
-        submitButton.disabled = true;
-        submitButton.textContent = "Submitting...";
-
-        // Get the new title from the input field
-        const newTitle = titleInput.value;
-
+      // Function to update the movie title
+      async function updateTitle(newTitle) {
         try {
-          // Send a request to the server to save the modified movie
+          // Send a request to the server to save the modified movie title
           const url = `https://vivid-flawless-almandine.glitch.me/movies/${movieId}`;
           const response = await fetch(url, {
-            method: "PUT",
+            method: "PATCH",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ title: newTitle }),
+            body: JSON.stringify({ original_title: newTitle }),
           });
           if (!response.ok) {
-            throw new Error(`Error modifying movie: ${response.status} ${response.statusText}`);
+            throw new Error(`Error modifying movie title: ${response.status} ${response.statusText}`);
           }
           const data = await response.json();
-          console.log("Movie modified:", data);
+          console.log("Movie title modified:", data);
 
           // Update the movie title in the DOM
           titleElement.textContent = newTitle;
-
-          // Create a new title element
-          const newTitleElement = document.createElement("h5");
-          newTitleElement.classList.add("card-title");
-          newTitleElement.textContent = newTitle;
-
-          // Replace the form with the new title element
-          form.replaceWith(newTitleElement);
         } catch (error) {
-          console.log("Error modifying movie:", error);
-        } finally {
-          // Enable the submit button after the request is completed
-          submitButton.disabled = false;
-          submitButton.textContent = "Submit";
+          console.log("Error modifying movie title:", error);
         }
-      });
+      }
 
-      // Replace the movie title element with the form
-      titleElement.replaceWith(form);
+      // Function to update the movie overview
+      async function updateOverview(newOverview) {
+        try {
+          // Send a request to the server to save the modified movie overview
+          const url = `https://vivid-flawless-almandine.glitch.me/movies/${movieId}`;
+          const response = await fetch(url, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ overview: newOverview }),
+          });
+          if (!response.ok) {
+            throw new Error(`Error modifying movie overview: ${response.status} ${response.statusText}`);
+          }
+          const data = await response.json();
+          console.log("Movie overview modified:", data);
+
+          // Update the movie overview in the DOM
+          overviewElement.textContent = newOverview;
+        } catch (error) {
+          console.log("Error modifying movie overview:", error);
+        }
+      }
+
+      // Log the movie information when modify button is clicked
+      console.log("Movie ID:", movieId);
+      console.log("Current Title:", currentTitle);
+      console.log("Current Overview:", currentOverview);
+
+      // Prompt the user to enter new title
+      const newTitle = prompt("Enter new title:");
+      if (newTitle !== null) {
+        updateTitle(newTitle);
+      }
+
+      // Prompt the user to enter new overview
+      const newOverview = prompt("Enter new overview:");
+      if (newOverview !== null) {
+        updateOverview(newOverview);
+      }
     }
+
 
 
 
