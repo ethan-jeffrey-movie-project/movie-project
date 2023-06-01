@@ -123,137 +123,79 @@
         return;
       }
 
-      // Create the modal container
-      const modalContainer = document.createElement("div");
-      modalContainer.classList.add("modal-container");
+      // Get the current title from the movie element
+      const titleElement = movieElement.querySelector(".card-title");
+      const currentTitle = titleElement.textContent;
 
-      // Create the modal element
-      const modal = document.createElement("div");
-      modal.classList.add("modal", "fade", "p-2");
-      modal.id = "modifyModal";
-      modal.tabIndex = "-1";
-      modal.setAttribute("role", "dialog");
-      modal.setAttribute("aria-labelledby", "modifyModalLabel");
-      modal.setAttribute("aria-hidden", "true");
+      // Create the form element
+      const form = document.createElement("form");
 
-      // Create the modal dialog element
-      const modalDialog = document.createElement("div");
-      modalDialog.classList.add("modal-dialog", "modal-dialog-centered");
-      modalDialog.setAttribute("role", "document");
-
-      // Create the modal content
-      const modalContent = document.createElement("div");
-      modalContent.classList.add("modal-content");
-
-      // Create the modal header
-      const modalHeader = document.createElement("div");
-      modalHeader.classList.add("modal-header", "border-bottom-0");
-
-      const modalTitle = document.createElement("h1");
-      modalTitle.classList.add("modal-title");
-      modalTitle.id = "modifyModalLabel";
-      modalTitle.textContent = "Modify Movie";
-
-      const closeButton = document.createElement("button");
-      closeButton.classList.add("close");
-      closeButton.setAttribute("type", "button");
-      closeButton.setAttribute("data-dismiss", "modal");
-      closeButton.setAttribute("aria-label", "Close");
-      closeButton.innerHTML = '<span aria-hidden="true">&times;</span>';
-
-      modalHeader.appendChild(modalTitle);
-      modalHeader.appendChild(closeButton);
-
-      // Create the modal body
-      const modalBody = document.createElement("div");
-      modalBody.classList.add("modal-body");
-
-      // Add the modal structure
-      modalBody.innerHTML = `
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-4">.col-md-4</div>
-        <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
-      </div>
-      <div class="row">
-        <div class="col-md-3 ms-auto">.col-md-3 .ms-auto</div>
-        <div class="col-md-2 ms-auto">.col-md-2 .ms-auto</div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 ms-auto">.col-md-6 .ms-auto</div>
-      </div>
-      <div class="row">
-        <div class="col-sm-9">
-          Level 1: .col-sm-9
-          <div class="row">
-            <div class="col-8 col-sm-6">
-              Level 2: .col-8 .col-sm-6
-            </div>
-            <div class="col-4 col-sm-6">
-              Level 2: .col-4 .col-sm-6
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
+      // Create the input field for the new title
+      const titleLabel = document.createElement("label");
+      titleLabel.textContent = "New Title:";
+      const titleInput = document.createElement("input");
+      titleInput.setAttribute("type", "text");
+      titleInput.classList.add("form-control");
+      titleInput.value = currentTitle;
+      titleLabel.appendChild(titleInput);
+      form.appendChild(titleLabel);
 
       // Create the submit button
       const submitButton = document.createElement("button");
       submitButton.classList.add("btn", "btn-primary");
-      submitButton.setAttribute("type", "button");
+      submitButton.setAttribute("type", "submit");
       submitButton.textContent = "Submit";
+      form.appendChild(submitButton);
 
-      // Add event listener to submit button
-      submitButton.addEventListener("click", () => {
+      // Add event listener to the form submission
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        // Disable the submit button to prevent multiple submissions
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+
         // Get the new title from the input field
         const newTitle = titleInput.value;
 
-        // Update the movie title in the DOM
-        const titleElement = movieElement.querySelector(".card-title");
-        if (titleElement) {
+        try {
+          // Send a request to the server to save the modified movie
+          const url = `https://vivid-flawless-almandine.glitch.me/movies/${movieId}`;
+          const response = await fetch(url, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ title: newTitle }),
+          });
+          if (!response.ok) {
+            throw new Error(`Error modifying movie: ${response.status} ${response.statusText}`);
+          }
+          const data = await response.json();
+          console.log("Movie modified:", data);
+
+          // Update the movie title in the DOM
           titleElement.textContent = newTitle;
+
+          // Create a new title element
+          const newTitleElement = document.createElement("h5");
+          newTitleElement.classList.add("card-title");
+          newTitleElement.textContent = newTitle;
+
+          // Replace the form with the new title element
+          form.replaceWith(newTitleElement);
+        } catch (error) {
+          console.log("Error modifying movie:", error);
+        } finally {
+          // Enable the submit button after the request is completed
+          submitButton.disabled = false;
+          submitButton.textContent = "Submit";
         }
-
-        // Send a request to the server to save the modified movie
-        const url = `https://vivid-flawless-almandine.glitch.me/movies/${movieId}`;
-        fetch(url, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ title: newTitle }),
-        })
-                .then((response) => response.json())
-                .then((data) => console.log("Movie modified:", data))
-                .catch((error) => console.log("Error modifying movie:", error));
-
-        // Close the modal
-        $(modal).modal("hide");
       });
 
-      // Create the modal footer
-      const modalFooter = document.createElement("div");
-      modalFooter.classList.add("modal-footer");
-      modalFooter.appendChild(submitButton);
-
-      // Assemble the modal elements
-      modalContent.appendChild(modalHeader);
-      modalContent.appendChild(modalBody);
-      modalContent.appendChild(modalFooter);
-      modalDialog.appendChild(modalContent);
-      modal.appendChild(modalDialog);
-
-      // Append the modal to the modal container
-      modalContainer.appendChild(modal);
-
-      // Append the modal container to the document body
-      document.body.appendChild(modalContainer);
-
-      // Show the modal
-      $(modal).modal("show");
+      // Replace the movie title element with the form
+      titleElement.replaceWith(form);
     }
-
 
 
 
