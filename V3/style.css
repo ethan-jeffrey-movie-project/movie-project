@@ -22,6 +22,13 @@
     --color-17: rgba(224, 84, 223, 0.6);
 }
 
+.nav-link.active {
+    background-color: #007bff; /* Blue background */
+    color: #fff; /* White text */
+    border-bottom: 2px solid #ff0000; /* Red bottom border */
+    font-weight: bold;
+    text-decoration: underline;
+}
 
 
 /* start da css for da buttons */

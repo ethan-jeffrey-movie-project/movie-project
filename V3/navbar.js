@@ -13,10 +13,10 @@ export const navbar = `
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="index.html" id="discover-movies-link">Discover Movies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="Favorites.html" id="favorites-link">Favorites</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,6 +41,21 @@ export const navbar = `
   </div>
 </nav>
 `;
+
+
+export function highlightActiveLink() {
+	const currentPage = window.location.pathname;
+	const discoverMoviesLink = document.querySelector("#discover-movies-link");
+	const favoritesLink = document.querySelector("#favorites-link");
+
+	if (currentPage.includes("index.html")) {
+		discoverMoviesLink.classList.add("active");
+		favoritesLink.classList.remove("active");
+	} else if (currentPage.includes("Favorites.html")) {
+		discoverMoviesLink.classList.remove("active");
+		favoritesLink.classList.add("active");
+	}
+}
 
 export function handleSearch(swiper) {
 	const navbarContainer = document.querySelector("#navbar");
