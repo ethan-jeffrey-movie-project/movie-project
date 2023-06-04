@@ -10,7 +10,8 @@ export const navbar = `
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="overflow-x: auto; white-space: nowrap">
+    
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.html" id="discover-movies-link">Discover Movies</a>
@@ -18,21 +19,71 @@ export const navbar = `
         <li class="nav-item">
           <a class="nav-link" href="Favorites.html" id="favorites-link">Favorites</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="cartwheel.html">cartwheel</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
+        
       </ul>
+      
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item active">
+      <a class="nav-link" href="#action">action</a>
+    </li>
+    <li class="nav-item active">
+<!--      <a class="nav-link" href="#adventure">adventure</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#animation">animation</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#comedy">comedy</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#crime">crime</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#documentary">documentary</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#drama">drama</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#family">family</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#fantasy">fantasy</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#history">history</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#horror">horror</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#music">music</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#mystery">mystery</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#romance">romance</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#science-fiction">science-fiction</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#tv-movie">tv-movie</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#thriller">thriller</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#war">war</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#western">western</a>-->
+<!--    </li>-->
+<!--     -->
+<!--      </ul>-->
+      
+      
       <form class="d-flex" role="search" id="search-form" autocomplete="off">
         <input class="form-control me-2" type="search" id="search-input" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit" id="search-btn">Search</button>

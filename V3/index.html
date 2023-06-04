@@ -44,8 +44,8 @@
 	<div id="main-container"></div>
 <!--seperate this into anothe rfunction start-->
 	<script type="text/html" id="template">
-		<div class="swiper-container" id="{{genre}}-swiper">
-			<h1>{{genre}}</h1>
+		<div class="swiper-container" id="{{genre}}-swiper" >
+			<h1 id="{{genre}}">{{genre}}</h1>
 			<div class="swiper-wrapper"></div>
 		</div>
 	</script>
@@ -100,8 +100,8 @@
 		}
 
 		// Event listener for "Discover Movies" link
-		const discoverMoviesLink = document.querySelector("#discover-movies-link");
-		discoverMoviesLink.addEventListener("click", favoriteMovies);
+		const discoverMoviesLink = document.querySelector("#discover-movies-link");//
+		// discoverMoviesLink.addEventListener("click", favoriteMovies);//
 		<!--seperate this into anothe rfunction ned-->
 
 	</script>

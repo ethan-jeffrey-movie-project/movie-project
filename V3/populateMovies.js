@@ -85,7 +85,7 @@ export function populateMovies(container, movies, genreId) {
 			container.appendChild(slide);
 			slide.classList.add("swiper-slide");
 			slide.classList.add("justify-content-between");
-			slide.classList.add("d-flex");
+			slide.classList.add("d-flex","p-0");
 		}
 
 		const slide = container.children[slideIndex];
@@ -137,7 +137,7 @@ export function populateMovies(container, movies, genreId) {
 		cardBody.appendChild(rating);
 
 		const genres = document.createElement("p");
-		genres.classList.add("card-genres", "pb-3", "m-0");
+		genres.classList.add("card-genres", "pb-1", "m-0");
 		// genres.classList.add("pb-1");
 		genres.textContent = movie.genre_ids;
 		cardBody.appendChild(genres);
@@ -174,7 +174,7 @@ export function populateMovies(container, movies, genreId) {
 		});
 
 		const buttonsContainer = document.createElement("div");
-		buttonsContainer.classList.add("d-flex", "justify-content-evenly", "p-2" );
+		buttonsContainer.classList.add("d-flex", "justify-content-evenly", "p-0", "m-0" );
 		buttonsContainer.appendChild(button);
 		buttonsContainer.appendChild(button2);
 
