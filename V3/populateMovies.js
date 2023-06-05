@@ -142,20 +142,6 @@ export function populateMovies(container, movies, genreId) {
 		genres.textContent = movie.genre_ids;
 		cardBody.appendChild(genres);
 
-		// const description = document.createElement("p");
-		// description.classList.add("card-text");
-		// description.textContent = movie.overview;
-		// cardBody.appendChild(description);
-		//
-		// const id = document.createElement("p");
-		// id.classList.add("card-text");
-		// id.textContent = movie.id;
-		// cardBody.appendChild(id);
-
-		// Add a different class to the card depending on its genre
-		// if (movie.genre_ids.includes(genreId)) {
-		// 	card.classList.add(`${genre.name.toLowerCase()}-swiper`);
-		// }
 		if (movie.genre_ids.includes(genreId)) {
 			card.classList.add(`${genreName.toLowerCase()}-swiper`);
 		}

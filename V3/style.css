@@ -22,6 +22,14 @@
     --color-17: rgba(224, 84, 223, 0.6);
 }
 
+html {
+    overflow: hidden;
+}
+
+body {
+    overflow: auto;
+}
+
 .nav-link.active {
     background-color: #007bff; /* Blue background */
     color: #fff; /* White text */
