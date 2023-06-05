@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 	<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="setTimeout('redirect()', 3)">
 
 <div id="navbar"></div>
 
@@ -131,5 +131,11 @@
 <!--	import { genres } from "./_fetchMovies.js";-->
 <!--	loadMoviesByGenres(genres)-->
 <!--</script>-->
+
+<script type="text/javascript">
+	function redirect() {
+		if (screen.width <= 950) {
+			window.location = "https://www.google.com/";}}
+</script>
 </body>
 </html>
