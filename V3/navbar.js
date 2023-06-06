@@ -23,8 +23,8 @@ export const navbar = `
         
       </ul>
       
-      <div class="genre-container">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 genre-list">
+      <div class="genre-container" >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 genre-list" >
       <li class="nav-item active genre-item">
       <a class="nav-link" href="#action">action</a>
     </li>

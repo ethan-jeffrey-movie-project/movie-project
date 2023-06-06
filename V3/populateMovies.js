@@ -85,7 +85,7 @@ export function populateMovies(container, movies, genreId) {
 			container.appendChild(slide);
 			slide.classList.add("swiper-slide");
 			slide.classList.add("justify-content-between");
-			slide.classList.add("d-flex","p-0");
+			slide.classList.add("d-flex","ps-1");
 		}
 
 		const slide = container.children[slideIndex];
@@ -280,8 +280,6 @@ export function populateMovies(container, movies, genreId) {
 			document.getElementById("clickGenres").textContent = "Genres: " + genreNames.join(', ');
 			document.getElementById("release_date").textContent = "Release Date: " + movie.release_date;
 		});
-
-
 
 	});
 }
