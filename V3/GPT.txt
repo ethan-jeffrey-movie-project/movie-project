@@ -1,10 +1,6 @@
 tmdb api: provides movies to the user
 rotten tomatoes api: ratings
 
-jquery
-
-swiper js
-
 overview:
 
 Create two forms:
@@ -16,48 +12,27 @@ when they reach the end make a new fetch
 
 and search for specific movies.
 - fix the initial search, you'll get a warning the first time
-🟩- show searched movie
 - when the search button is entered or pressed,
 hide the movie genres,
-🟩 and show the searched movie
 - when the user is searching for a movie, show the possible movies that they could select
 
 Whenever the user searches for a specific movie in Form 2,
-🟩you'll need to make a fetch request to TMDB to get the movie information.
 You can then compare the movie ID to the IDs in your JSON file to see if the movie is already in your favorites.
-🟩- create json file that has your saved movies
-
-If the movie is already in your favorites, you'll use the information from the JSON file to display the movie data.
-- if the id matches it'll show that it is currently saved in your json file
-If the movie is not in your favorites, you'll use the information from TMDB to display the movie data.
-
-🟩When the user wants to edit a movie, they'll need to do it in Form 1.
-🟩They can edit the movie data and then save it to the JSON file.
-edit description
-edit rating
-The updated data will then be displayed in both Form 1 and Form 2.
 
 Whenever a user rates a movie,
 the rating data can be saved to the JSON file.
 This way, the user can see their rating in Form 1 and it will also be displayed in Form 2.
 
-🟩Whenever the user deletes a movie from their favorites in Form 1, the movie data will be removed from the JSON file.
-🟩This means that the movie will no longer be displayed in either Form 1 or Form 2.
-
 reload , fill the input form with my selection , i get this warning,"form submission canceled because the form is not connected",
 input clears, fill the input form with my selection again , i can see the fetch request in the console along with what i wanted to search for
 
-implement the cartwheel
-- have the cartwheel in a different html form
-- cartwheel will have your favorite movies
-- fetch all your favorite movies from the endpoint
-- only display title
--spin wheel button will spin again and display the movie title
+fix scrolling whenever a user searches
+fix scrolling whever a user saves a movie
+last slide when scrolling swaps back to
 
 https://api.themoviedb.org/3/movie/594767?api_key=214b0c421aba976a138bfac1f35db29b&language=en-US
 
 https://api.themoviedb.org/3/movie/${movieId}?api_key=${movie_key}&language=en-US
-
 
 use this for url
 https://vivid-flawless-almandine.glitch.me/movies

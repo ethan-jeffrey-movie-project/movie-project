@@ -21,7 +21,7 @@
 <div id="navbar"></div>
 
 <div class="container mt-5">
-  <h1>favorites <a href="index.html">index</a></h1>
+<!--  <h1>favorites <a href="index.html">index</a></h1>-->
 
   <div class="swiper-container" id="saved-swiper">
     <h1>saved movies</h1>
@@ -52,65 +52,72 @@
                 // Clear the swiper wrapper
                 swiperWrapper.innerHTML = "";
 
-                // Iterate over the saved movies and create card elements to display the movie data
-                data.forEach(movie => {
-                  const card = document.createElement("div");
-                  card.classList.add("card");
-                  card.style.maxWidth = "19%";
+                // Determine the number of slides required
+                const numSlides = Math.ceil(data.length / 4);
 
-                  const img = document.createElement("img");
-                  img.classList.add("card-img-top");
-                  img.style.maxHeight = "90%";
-                  img.style.maxWidth = "150px";
-                  img.alt = movie.original_title;
-                  if (movie.backdrop_path) {
-                    img.src = `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`;
-                  } else {
-                    img.src = `https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`;
-                  }
-                  card.appendChild(img);
-
-                  const cardBody = document.createElement("div");
-                  cardBody.classList.add("card-body");
-
-                  const title = document.createElement("h5");
-                  title.classList.add("card-title");
-                  title.textContent = movie.title;
-                  cardBody.appendChild(title);
-
-                  const description = document.createElement("p");
-                  description.classList.add("card-text");
-                  description.textContent = movie.overview;
-                  cardBody.appendChild(description);
-
-                  const deleteButton = document.createElement("a");
-                  deleteButton.classList.add("btn", "btn-danger");
-                  deleteButton.href = "#";
-                  deleteButton.textContent = "delete";
-                  deleteButton.addEventListener("click", () => deleteMovie(movie.id));
-                  cardBody.appendChild(deleteButton);
-
-                  const modifyButton = document.createElement("a");
-                  modifyButton.classList.add("btn", "btn-primary");
-                  modifyButton.href = "#";
-                  modifyButton.textContent = "modify";
-                  modifyButton.addEventListener("click", () => modifyMovie(movie.id));
-                  cardBody.appendChild(modifyButton);
-
-                  card.appendChild(cardBody);
-
+                for (let i = 0; i < numSlides; i++) {
+                  // Create a swiper slide container
                   const swiperSlide = document.createElement("div");
-                  swiperSlide.classList.add("swiper-slide");
-                  swiperSlide.setAttribute("data-id", movie.id); // Set the data-id attribute
-                  swiperSlide.appendChild(card);
+                  swiperSlide.classList.add("swiper-slide", "justify-content-around", "d-flex");
 
+                  // Calculate the range of movies to display on this slide
+                  const startIndex = i * 4;
+                  const endIndex = Math.min(startIndex + 4, data.length);
+
+                  // Iterate over the movies and create card-swipers for this slide
+                  for (let j = startIndex; j < endIndex; j++) {
+                    const movie = data[j];
+
+                    const cardSwiper = document.createElement("div");
+                    cardSwiper.classList.add("card-swiper");
+                    cardSwiper.style.maxWidth = "19%";
+                    cardSwiper.setAttribute("data-id", movie.id)
+
+                    const img = document.createElement("img");
+                    img.style.height = "100%";
+                    img.style.width = "100%";
+                    img.alt = movie.original_title;
+                    if (movie.poster_path) {
+                      img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+                    } else {
+                      img.src = `https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`;
+                    }
+                    cardSwiper.appendChild(img);
+
+                    const cardBody = document.createElement("div");
+                    cardBody.classList.add("p-3", "card-body");
+
+                    const title = document.createElement("h5");
+                    title.classList.add("card-title");
+                    title.textContent = movie.original_title;
+                    cardBody.appendChild(title);
+
+                    const description = document.createElement("p");
+                    description.classList.add("card-text");
+                    description.textContent = movie.overview;
+                    cardBody.appendChild(description);
+
+                    const deleteButton = document.createElement("a");
+                    deleteButton.classList.add("btn", "btn-danger", "m-0");
+                    deleteButton.href = "#";
+                    deleteButton.textContent = "delete";
+                    deleteButton.addEventListener("click", () => deleteMovie(movie.id));
+                    cardBody.appendChild(deleteButton);
+
+                    const modifyButton = document.createElement("a");
+                    modifyButton.classList.add("btn", "btn-primary", "m-0");
+                    modifyButton.href = "#";
+                    modifyButton.textContent = "modify";
+                    modifyButton.addEventListener("click", () => modifyMovie(movie.id));
+                    cardBody.appendChild(modifyButton);
+
+                    cardSwiper.appendChild(cardBody);
+                    swiperSlide.appendChild(cardSwiper);
+                  }
+
+                  // Append the swiper slide to the swiper wrapper
                   swiperWrapper.appendChild(swiperSlide);
-                });
-
-                // Initialize the Swiper instance
-                const savedSwiper = new Swiper("#saved-swiper", {
-                  // Swiper configuration options
-                });
+                }
               })
               .catch(error => console.log(error));
     }
@@ -118,34 +125,88 @@
 
     function modifyMovie(movieId) {
       // Find the movie element in the DOM based on its ID
-      const movieElement = document.querySelector(`#saved-swiper [data-id="${movieId}"]`);
+      // const movieElement = document.querySelector(`#saved-swiper [data-id="${movieId}"]`);
+      const movieElement = document.querySelector(`.card-swiper[data-id="${movieId}"]`);
       if (!movieElement) {
         console.log(`Movie with ID ${movieId} not found.`);
         return;
       }
 
-      // Get the new title from the user
-      const newTitle = prompt("Enter the new title:");
-
-      // Update the movie title in the DOM
+      // Get the current title and overview from the movie element
       const titleElement = movieElement.querySelector(".card-title");
-      if (titleElement) {
-        titleElement.textContent = newTitle;
+      const currentTitle = titleElement.textContent;
+      const overviewElement = movieElement.querySelector(".card-text");
+      const currentOverview = overviewElement.textContent;
+
+      // Function to update the movie title
+      async function updateTitle(newTitle) {
+        try {
+          // Send a request to the server to save the modified movie title
+          const url = `https://vivid-flawless-almandine.glitch.me/movies/${movieId}`;
+          const response = await fetch(url, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ original_title: newTitle }),
+          });
+          if (!response.ok) {
+            throw new Error(`Error modifying movie title: ${response.status} ${response.statusText}`);
+          }
+          const data = await response.json();
+          console.log("Movie title modified:", data);
+
+          // Update the movie title in the DOM
+          titleElement.textContent = newTitle;
+        } catch (error) {
+          console.log("Error modifying movie title:", error);
+        }
       }
 
-      // Send a request to the server to save the modified movie
-      const url = `https://vivid-flawless-almandine.glitch.me/movies/${movieId}`;
-      fetch(url, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ title: newTitle })
-      })
-              .then(response => response.json())
-              .then(data => console.log("Movie modified:", data))
-              .catch(error => console.log("Error modifying movie:", error));
+      // Function to update the movie overview
+      async function updateOverview(newOverview) {
+        try {
+          // Send a request to the server to save the modified movie overview
+          const url = `https://vivid-flawless-almandine.glitch.me/movies/${movieId}`;
+          const response = await fetch(url, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ overview: newOverview }),
+          });
+          if (!response.ok) {
+            throw new Error(`Error modifying movie overview: ${response.status} ${response.statusText}`);
+          }
+          const data = await response.json();
+          console.log("Movie overview modified:", data);
+
+          // Update the movie overview in the DOM
+          overviewElement.textContent = newOverview;
+        } catch (error) {
+          console.log("Error modifying movie overview:", error);
+        }
+      }
+
+      // Log the movie information when modify button is clicked
+      console.log("Movie ID:", movieId);
+      console.log("Current Title:", currentTitle);
+      console.log("Current Overview:", currentOverview);
+
+      // Prompt the user to enter new title
+      const newTitle = prompt("Enter new title:");
+      if (newTitle !== null) {
+        updateTitle(newTitle);
+      }
+
+      // Prompt the user to enter new overview
+      const newOverview = prompt("Enter new overview:");
+      if (newOverview !== null) {
+        updateOverview(newOverview);
+      }
     }
+
+
 
 
 
@@ -207,7 +268,6 @@
 
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -224,3 +284,7 @@
 </body>
 
 </html>
+
+
+
+

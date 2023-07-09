@@ -10,26 +10,30 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 	<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="setTimeout('redirect()', 30)">
 
 <div id="navbar"></div>
 
-<div class="container">
+<div class="container pt-5">
 	<div class="row">
 		<div class="col-md-6">
-			<img class="img-fluid"  id="clickImg" src="" alt="_">
+			<img class="img-fluid" id="clickImg" src="https://image.tmdb.org/t/p/w1280/fgw4rFs4XMWdJTWp1eMacHKQqbZ.jpg" alt="_">
 		</div>
 		<div class="col-md-6">
-			<h1 id="clickTitle"></h1>
-			<p id="clickAbout">
-			</p>
+			<h1 id="clickTitle">John Wick: Chapter 4</h1>
+			<p class="text-center" id="clickAbout">With the price on his head ever increasing, John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.</p>
+			<div class="d-flex justify-content-between">
+				<p id="release_date">Release Date: 2023-03-22</p>
+				<p id="Rating">average rating: 7.9</p>
+			</div>
+			<p class="text-center" id="clickGenres">Genres: Action, Thriller, Crime</p>
 		</div>
 	</div>
+
 </div>
 
 
 <div class="container mt-5">
-	<h1>Discover Movies <a href="Favorites.html" id="discover-movies-link">Favorites</a></h1>
 
 	<div class="swiper-container" id="search-swiper">
 		<h1>search</h1>
@@ -39,13 +43,14 @@
 	<div id="main-container"></div>
 <!--seperate this into anothe rfunction start-->
 	<script type="text/html" id="template">
-		<div class="swiper-container" id="{{genre}}-swiper">
-			<h1>{{genre}}</h1>
+		<div class="swiper-container" id="{{genre}}-swiper" >
+			<h1 id="{{genre}}">{{genre}}</h1>
 			<div class="swiper-wrapper"></div>
 		</div>
 	</script>
 
 	<script>
+		// this will populate the h1 genres
 		const genres = [
 			'action',
 			'adventure',
@@ -94,8 +99,8 @@
 		}
 
 		// Event listener for "Discover Movies" link
-		const discoverMoviesLink = document.querySelector("#discover-movies-link");
-		discoverMoviesLink.addEventListener("click", favoriteMovies);
+		const discoverMoviesLink = document.querySelector("#discover-movies-link");//
+		// discoverMoviesLink.addEventListener("click", favoriteMovies);//
 		<!--seperate this into anothe rfunction ned-->
 
 	</script>
@@ -125,5 +130,11 @@
 <!--	import { genres } from "./_fetchMovies.js";-->
 <!--	loadMoviesByGenres(genres)-->
 <!--</script>-->
+
+<script type="text/javascript">
+	function redirect() {
+		if (screen.width <= 950) {
+			window.location = "https://www.google.com/";}}
+</script>
 </body>
 </html>

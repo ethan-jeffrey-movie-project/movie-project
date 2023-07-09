@@ -2,6 +2,7 @@ import {navbar} from "./navbar.js";
 import {populateMovies} from "./populateMovies.js";
 import {handleSearch} from "./navbar.js";
 import { TMDB_key } from "../keys.js";
+import {highlightActiveLink} from "./navbar.js";
 
 const movie_key = TMDB_key;
 
@@ -46,6 +47,7 @@ export function loadMovies(swiperIds, genreIds) {
 				}
 			}, 0);
 			document.querySelector("#navbar").innerHTML = navbar;
+			highlightActiveLink()
 		})
 		.catch((error) => {
 			console.log(error);
